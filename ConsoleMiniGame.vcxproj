@@ -124,6 +124,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleMiniGame.cpp" />
+    <ClCompile Include="Core\GameApplication.cpp" />
+    <ClCompile Include="Service\InputService.cpp" />
+    <ClCompile Include="Service\TimeService.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\Common.h" />
+    <ClInclude Include="Core\GameApplication.h" />
+    <ClInclude Include="Service\InputService.h" />
+    <ClInclude Include="Service\TimeService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
