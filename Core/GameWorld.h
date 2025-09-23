@@ -1,6 +1,8 @@
-#pragma once
+﻿#pragma once
 #include "Common.h"
 
+
+//TODO : Level쓸건지? GameWorld랑 ContentManager랑 역할 구분이 잘 안됨.
 class BaseLevel;
 
 class GameWorld final

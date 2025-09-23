@@ -1,4 +1,4 @@
-#include "GameApplication.h"
+﻿#include "GameApplication.h"
 #include "../Service/TimeService.h"
 #include "GameMaster.h"
 
@@ -21,6 +21,7 @@ void GameApplication::Update()
 void GameApplication::Render()
 {
 	m_screen.Clear();
+	//TODO : GAMEINSTANCE 쓸건지 말건지 결정 필요
 	//GameInstance::GetInstance()->RenderHud(m_screen);
 	m_screen.SwapBuffer();
 }

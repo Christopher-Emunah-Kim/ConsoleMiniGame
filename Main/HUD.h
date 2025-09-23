@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Service/ScreenService.h"
 
 constexpr __int32 MAX_LINES = 35;

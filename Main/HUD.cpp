@@ -1,4 +1,4 @@
-#include "HUD.h"
+ï»¿#include "HUD.h"
 #include "../Core/GameMaster.h"
 
 void HUD::Render(ScreenService& screen) const
@@ -8,56 +8,57 @@ void HUD::Render(ScreenService& screen) const
 	RenderBottomPanel(screen);
 }
 
+//TODO : ë„ê·œêº¼ ë³´ê³  Render ì¼ê´„ ì²˜ë¦¬í• ìˆ˜ìˆëŠ” í”„ë ˆì„ êµ¬ì¡° ì—†ë‚˜ í™•ì¸. ì´ê±´ ë„ˆë¬´ í•˜ë“œì½”ë”© ëŠë‚Œ.
 void HUD::RenderInfoPanel(ScreenService& screen) const
 {
-	screen.Draw(0, 0, L"¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤");
+	screen.Draw(0, 0, L"â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”");
 
 	for (int16 y = 1; y < SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT; ++y)
 	{
-		screen.Draw(0, y, L"¦¢");
-		screen.Draw(PLAYERINFO_PANEL_WIDTH, y, L"¦¢");
-		screen.Draw(SCREEN_WIDTH - 2, y, L"¦¢");
+		screen.Draw(0, y, L"â”‚");
+		screen.Draw(PLAYERINFO_PANEL_WIDTH, y, L"â”‚");
+		screen.Draw(SCREEN_WIDTH - 2, y, L"â”‚");
 	}
 
 	screen.Draw(LEFT_MARGIN + 5, 1, L"[ WELCOM TO TRPG ]");
 	screen.Draw((int32)(SCREEN_WIDTH * 0.55f), 1, L"<< ");
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 1, L"¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡");
-	screen.Draw(GAME_PANEL_START_X, PLAYER_UI_BASE_Y + 1, L"¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡");
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 3, L"     [ ÇÃ·¹ÀÌ¾î  Á¤º¸ ]");
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 4, L"¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡");
+	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 1, L"â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
+	screen.Draw(GAME_PANEL_START_X, PLAYER_UI_BASE_Y + 1, L"â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 3, L"     [ í”Œë ˆì´ì–´  ì •ë³´ ]");
+	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 4, L"â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
 	PLAYER_UI_BASE_Y + 5;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 6, L"¾ÆÀÌµğ : " );
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 6, L"ì•„ì´ë”” : " );
 	PLAYER_UI_BASE_Y + 7;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 8, L"·¹º§ : " );
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 8, L"ë ˆë²¨ : " );
 	PLAYER_UI_BASE_Y + 9;
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 10, L"¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡");
+	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 10, L"â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
 	PLAYER_UI_BASE_Y + 11;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 12, L"Ã¼·Â : " );
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 12, L"ì²´ë ¥ : " );
 	PLAYER_UI_BASE_Y + 13;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 14, L"°æÇèÄ¡ : " );
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 14, L"ê²½í—˜ì¹˜ : " );
 	PLAYER_UI_BASE_Y + 15;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 16, L"º¸À¯ ±İ¾× : " );
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 16, L"ë³´ìœ  ê¸ˆì•¡ : " );
 	PLAYER_UI_BASE_Y + 17;
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 18, L"¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡");
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 19, L"  [ ÇÃ·¹ÀÌ¾î  ½ºÅ×ÀÌÅÍ½º ]");
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 20, L"¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡");
+	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 18, L"â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 19, L"  [ í”Œë ˆì´ì–´  ìŠ¤í…Œì´í„°ìŠ¤ ]");
+	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 20, L"â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
 	PLAYER_UI_BASE_Y + 21;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 22, L"°ø°İ·Â : " );
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 22, L"ê³µê²©ë ¥ : " );
 	PLAYER_UI_BASE_Y + 23;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 24, L"¹æ¾î·Â : " );
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 24, L"ë°©ì–´ë ¥ : " );
 	PLAYER_UI_BASE_Y + 25;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 26, L"¹ÎÃ¸¼º : " );
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 26, L"ë¯¼ì²©ì„± : " );
 	PLAYER_UI_BASE_Y + 27;
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 28, L"¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡");
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 29, L"»ç¿ë ¹«±â: " );
+	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 28, L"â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 29, L"ì‚¬ìš© ë¬´ê¸°: " );
 	PLAYER_UI_BASE_Y + 30;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 31, L"»ç¿ë ¹æ¾î±¸: " );
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 31, L"ì‚¬ìš© ë°©ì–´êµ¬: " );
 	PLAYER_UI_BASE_Y + 32;
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 33, L"°¡¹æ: ");
+	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 33, L"ê°€ë°©: ");
 
 	/*if (m_hudData.inventoryItems.empty())
 	{
-		screen.Draw(LEFT_MARGIN + 6, PLAYER_UI_BASE_Y + 33, L"¾øÀ½");
+		screen.Draw(LEFT_MARGIN + 6, PLAYER_UI_BASE_Y + 33, L"ì—†ìŒ");
 	}
 	else
 	{
@@ -70,13 +71,13 @@ void HUD::RenderInfoPanel(ScreenService& screen) const
 		}
 	}*/
 
-	screen.Draw(0, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT, L"¦¢¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¢");
-	screen.Draw(0, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"¦¢");
+	screen.Draw(0, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT, L"â”‚â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”‚");
+	screen.Draw(0, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"â”‚");
 
 
 
-	screen.Draw(SCREEN_WIDTH - 2, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"¦¢");
-	screen.Draw(0, SCREEN_HEIGHT - 1, L"¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+	screen.Draw(SCREEN_WIDTH - 2, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"â”‚");
+	screen.Draw(0, SCREEN_HEIGHT - 1, L"â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 
 }
 
@@ -100,7 +101,7 @@ void HUD::RenderMainPanel(ScreenService& screen) const
 
 void HUD::RenderBottomPanel(ScreenService& screen) const
 {
-	screen.Draw(2, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"¸í·É > ");
+	screen.Draw(2, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"ëª…ë ¹ > ");
 	screen.Draw(9, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, GAME_MASTER->GetInputService().GetInputBuffer());
 }
 
