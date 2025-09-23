@@ -24,6 +24,9 @@
 #include <fstream>
 #include <sstream>
 
+
+#define GAME_MASTER GameMaster::GetInstance()
+
 typedef signed __int8       int8;     //-128~127
 typedef signed __int16      int16;   //-32768~32767
 typedef signed __int32      int32;   //-2147483648~2147483647
@@ -32,7 +35,6 @@ typedef unsigned __int8     uint8;   //0~255
 typedef unsigned __int16    uint16;  //0~65535
 typedef unsigned __int32    uint32;  //0~4294967295
 typedef unsigned __int64    uint64;  //0~18446744073709551615
-
 
 using namespace std;
 using namespace std::chrono;

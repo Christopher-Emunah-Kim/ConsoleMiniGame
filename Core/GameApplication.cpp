@@ -9,13 +9,13 @@ GameApplication::~GameApplication() noexcept
 
 void GameApplication::ProcessInput()
 {
-	GameMaster::GetInstance()->GetInputService().ProcessTextInput();
+	GAME_MASTER->GetInputService().ProcessTextInput();
 }
 
 
 void GameApplication::Update()
 {
-	GameMaster::GetInstance()->GetWorld().Update();
+	GAME_MASTER->GetWorld().Update();
 }
 
 void GameApplication::Render()
@@ -28,20 +28,20 @@ void GameApplication::Render()
 
 void GameApplication::Release()
 {
-	GameMaster::GetInstance()->GetWorld().Release();
+	GAME_MASTER->GetWorld().Release();
 }
 
 bool GameApplication::Initialize()
 {
 	m_screen.Init();
-	GameMaster::GetInstance()->GetWorld().Init();
+	GAME_MASTER->GetWorld().Init();
 
 	return true;
 }
 
 void GameApplication::Run()
 {
-	TimeService& timeService = GameMaster::GetInstance()->GeteTimeService();
+	TimeService& timeService = GAME_MASTER->GeteTimeService();
 	timeService.Init();
 
 	//while (!GameInstance()->ShouldQuit())

@@ -12,7 +12,6 @@ public:
 	void Init();
 	bool CanUpdate();
 
-
 private:
 	TimePoint m_prevTimePoint{};
 	float m_deltaTime{ 0.0f };
