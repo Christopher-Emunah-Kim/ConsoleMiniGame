@@ -8,6 +8,9 @@ void GameMaster::Initialize()
 	if (!m_timeService)
 		m_timeService = make_unique<TimeService>();
 
+	if(!m_contentManager)
+		m_contentManager = make_unique<ContentManager>();
+
 	if (!m_gameWorld)
 		m_gameWorld = make_unique<GameWorld>();
 }
@@ -18,6 +21,15 @@ void GameMaster::Shutdown()
 	{
 		m_gameWorld->Release();
 		m_gameWorld.reset();
+	}
+
+	if(m_contentManager)
+	{
+		if(m_contentManager->GetCurrentContent())
+		{
+			m_contentManager->GetCurrentContent()->OnRelease();
+		}
+		m_contentManager.reset();
 	}
 
 	if(m_timeService)

@@ -102,6 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,12 +126,24 @@
   <ItemGroup>
     <ClCompile Include="ConsoleMiniGame.cpp" />
     <ClCompile Include="Core\GameApplication.cpp" />
+    <ClCompile Include="Core\GameMaster.cpp" />
+    <ClCompile Include="Core\GameWorld.cpp" />
+    <ClCompile Include="Main\HUD.cpp" />
+    <ClCompile Include="Service\ScreenService.cpp" />
+    <ClCompile Include="Main\ContentManager.cpp" />
     <ClCompile Include="Service\InputService.cpp" />
     <ClCompile Include="Service\TimeService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Common.h" />
     <ClInclude Include="Core\GameApplication.h" />
+    <ClInclude Include="Core\GameMaster.h" />
+    <ClInclude Include="Core\GameWorld.h" />
+    <ClInclude Include="Main\HUD.h" />
+    <ClInclude Include="Service\ScreenService.h" />
+    <ClInclude Include="Core\Singleton.h" />
+    <ClInclude Include="Main\ContentManager.h" />
+    <ClInclude Include="Main\IContent.h" />
     <ClInclude Include="Service\InputService.h" />
     <ClInclude Include="Service\TimeService.h" />
   </ItemGroup>

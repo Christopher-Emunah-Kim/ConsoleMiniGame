@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <Windows.h>
 #include <conio.h>
@@ -15,6 +15,8 @@
 #include <array>
 #include <list>
 #include <map>
+#include <deque>
+
 #include <algorithm>
 
 #include <chrono>
