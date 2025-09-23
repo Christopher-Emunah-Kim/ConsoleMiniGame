@@ -1,5 +1,5 @@
 #pragma once
-#include "Common.h"
+#include "../Core/Common.h"
 
 constexpr int32 SCREEN_WIDTH = 128;
 constexpr int32 SCREEN_HEIGHT = 42;
@@ -11,10 +11,10 @@ constexpr int8 BUFFER_SIZE = 2;
 constexpr int8 DEFAULT_FONT_COLOR = WHITE;
 constexpr int8 DEFAULT_BG_COLOR = BLACK;
 
-class Screen final
+class ScreenService final
 {
 public:
-	virtual ~Screen();
+	virtual ~ScreenService();
 
 private:
 	void VisibleConsoleCursor(bool isVisible);

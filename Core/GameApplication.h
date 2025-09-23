@@ -1,5 +1,5 @@
 #pragma once
-#include "Screen.h"
+#include "../Service/ScreenService.h"
 
 class GameApplication
 {
@@ -17,6 +17,6 @@ public:
 	void Run();
 
 private:
-	Screen m_screen;
+	ScreenService m_screen;
 };
 

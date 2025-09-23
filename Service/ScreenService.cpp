@@ -1,11 +1,11 @@
-#include "Screen.h"
+#include "ScreenService.h"
 
-Screen::~Screen()
+ScreenService::~ScreenService()
 {
 	Release();
 }
 
-void Screen::VisibleConsoleCursor(bool isVisible)
+void ScreenService::VisibleConsoleCursor(bool isVisible)
 {
 	CONSOLE_CURSOR_INFO cursorInfo;
 
@@ -18,7 +18,7 @@ void Screen::VisibleConsoleCursor(bool isVisible)
 	SetConsoleCursorInfo(m_consoleBuffers[1], &cursorInfo);
 }
 
-bool Screen::IsValidCoordinate(int32 x, int32 y)
+bool ScreenService::IsValidCoordinate(int32 x, int32 y)
 {
 	if (0 <= x && x < SCREEN_WIDTH && 0 <= y && y < SCREEN_HEIGHT)
 	{
@@ -30,7 +30,7 @@ bool Screen::IsValidCoordinate(int32 x, int32 y)
 	}
 }
 
-bool Screen::IsHangulSyllable(const wchar_t& c) const
+bool ScreenService::IsHangulSyllable(const wchar_t& c) const
 {
 	// 0xAC00(°¡) ~ 0xD7A3(ÁK)
 	if (c >= (int32)0xAC00 && c <= (int32)0xD7A3)
@@ -41,7 +41,7 @@ bool Screen::IsHangulSyllable(const wchar_t& c) const
 	return false;
 }
 
-void Screen::SetFixedWindowSize()
+void ScreenService::SetFixedWindowSize()
 {
 	HWND consoleWindow = GetConsoleWindow();
 	if (consoleWindow == nullptr)
@@ -58,7 +58,7 @@ void Screen::SetFixedWindowSize()
 	MoveWindow(consoleWindow, 100, 100, windowWidth, windowHeight, TRUE);
 }
 
-void Screen::SetFontColor(int8 color, int8 bgColor)
+void ScreenService::SetFontColor(int8 color, int8 bgColor)
 {
 	if (bgColor < BLACK || bgColor > WHITE)
 	{
@@ -68,7 +68,7 @@ void Screen::SetFontColor(int8 color, int8 bgColor)
 	SetConsoleTextAttribute(m_consoleBuffers[m_backBufferIdx], ((bgColor & 0xf) << 4) | (color & 0xf));
 }
 
-void Screen::Init()
+void ScreenService::Init()
 {
 	CreateBuffer();
 
@@ -79,7 +79,7 @@ void Screen::Init()
 	VisibleConsoleCursor(false);
 }
 
-void Screen::CreateBuffer()
+void ScreenService::CreateBuffer()
 {
 	//Double Buffering
 	//1. Create two screen buffers
@@ -120,7 +120,7 @@ void Screen::CreateBuffer()
 	m_backBufferIdx = 0;
 }
 
-void Screen::Release()
+void ScreenService::Release()
 {
 	VisibleConsoleCursor(true);
 	for (int32 i = 0; i < BUFFER_SIZE; ++i)
@@ -133,7 +133,7 @@ void Screen::Release()
 	}
 }
 
-void Screen::Clear()
+void ScreenService::Clear()
 {
 	for (int32 y = 0; y < SCREEN_HEIGHT; ++y)
 	{
@@ -144,7 +144,7 @@ void Screen::Clear()
 	}
 }
 
-void Screen::SwapBuffer()
+void ScreenService::SwapBuffer()
 {
 	HANDLE hBackBuffer = m_consoleBuffers[m_backBufferIdx];
 
@@ -175,7 +175,7 @@ void Screen::SwapBuffer()
 	m_backBufferIdx = (m_backBufferIdx + 1) % 2;
 }
 
-void Screen::Draw(int32 x, int32 y, const wchar_t& c)
+void ScreenService::Draw(int32 x, int32 y, const wchar_t& c)
 {
 	if (false == IsValidCoordinate(x, y))
 	{
@@ -185,7 +185,7 @@ void Screen::Draw(int32 x, int32 y, const wchar_t& c)
 	m_writeBuffer[y][x] = c;
 }
 
-void Screen::Draw(int32 x, int32 y, const wstring& str, int8 color, int8 bgColor)
+void ScreenService::Draw(int32 x, int32 y, const wstring& str, int8 color, int8 bgColor)
 {
 	SetFontColor(color, bgColor);
 	
