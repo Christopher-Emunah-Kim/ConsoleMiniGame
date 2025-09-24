@@ -12,6 +12,7 @@ private:
 	{
 		InputAction action;
 		bool wasPressed = false;
+		steady_clock::time_point lastPressedTime;
 	};
 
 
