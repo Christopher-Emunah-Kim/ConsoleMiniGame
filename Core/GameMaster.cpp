@@ -11,9 +11,6 @@ void GameMaster::Initialize()
 	if(!m_contentManager)
 		m_contentManager = make_unique<ContentManager>();
 
-	if (!m_gameWorld)
-		m_gameWorld = make_unique<GameWorld>();
-
 	if ( !m_hud )
 		m_hud = make_unique<HUD>();
 }
@@ -23,12 +20,6 @@ void GameMaster::Shutdown()
 	if(m_hud)
 	{
 		m_hud.reset();
-	}
-
-	if(m_gameWorld)
-	{
-		m_gameWorld->Release();
-		m_gameWorld.reset();
 	}
 
 	if(m_contentManager)

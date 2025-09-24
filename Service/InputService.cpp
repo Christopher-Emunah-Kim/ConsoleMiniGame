@@ -28,7 +28,7 @@ bool InputService::ProcessKeyAction( uint16 keyCode )
 }
 
 //Unreal Input Mapping Style(단일키를 정수 ID로 관리)
-InputKeyCode InputService::MakeKeyCode( uint8 prefix , uint8 key )
+InputService::InputKeyCode InputService::MakeKeyCode( uint8 prefix , uint8 key )
 {
 	return static_cast<InputKeyCode>( ( static_cast<uint16>( prefix ) << 8 ) | static_cast<uint16>( key ) );
 }

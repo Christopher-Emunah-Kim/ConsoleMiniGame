@@ -1,8 +1,6 @@
 ﻿#pragma once
 #include "../Core/Common.h"
 
-
-
 class InputService
 {
 private:

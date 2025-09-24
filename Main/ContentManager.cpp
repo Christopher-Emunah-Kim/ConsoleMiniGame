@@ -39,7 +39,7 @@ void ContentManager::AddContent( int contentId , unique_ptr<IContent> content )
 
 	if (contentsMap.find(contentId) == contentsMap.end())
 	{
-		contentsMap.insert(std::make_pair(contentId, content));
+		contentsMap.insert( std::make_pair( contentId , std::move( content ) ) );
 	}
 }
 
