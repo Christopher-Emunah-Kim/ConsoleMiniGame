@@ -17,10 +17,29 @@ struct FHudData final
 	wstring playerName;
 };
 
+struct FHudLayout final
+{
+	int32 infoPanelWidth = PLAYERINFO_PANEL_WIDTH;
+	int32 mainPanelStartX = GAME_PANEL_START_X;
+	int32 mainPanelTopY = SYSTEM_TEXT_BASE_Y + 1;
+	int32 mainPanelHeight = MAX_LINES;
+	int32 rightMargin = RIGHT_MARGIN;
+	bool useMainTextPanel = true;
+
+};
+
+struct FHudViewport final
+{
+	int32 x = GAME_PANEL_START_X + 1;
+	int32 y = SYSTEM_TEXT_BASE_Y + 1;
+	int32 width = SCREEN_WIDTH - RIGHT_MARGIN - ( GAME_PANEL_START_X + 1 );
+	int32 height = MAX_LINES;
+};
+
 class HUD final
 {
 public:
-	HUD() = default;
+	HUD();
 	virtual ~HUD() = default;
 
 private:
@@ -35,10 +54,17 @@ public:
 	void ClearText();
 	void SetCommandLineText( const wstring& text );
 
-	//void UpdateHudData(const wstring& contentName, const wstring& playerName);
+	void SetLayout( const FHudLayout& layout );
+	void ResetLayout();
+
+	FHudLayout& GetLayout() { return m_layout; }
+	FHudLayout& GetDefaultLayout() { return m_defaultLayout; }
+	FHudViewport GetGameViewportRect() const;
 
 private:
 	FHudData m_hudData;
+	FHudLayout m_layout;
+	FHudLayout m_defaultLayout;
 	deque<wstring> m_mainTextQueue;
 	wstring m_commandLineText;
 };

@@ -2,6 +2,8 @@
 #include "../Core/Common.h"
 #include "../Core/GameMaster.h"
 #include "Content/TitleContent.h"
+#include "Content/TheSnake/SnakeContent.h"
+
 
 void ContentManager::LoadContent()
 {
@@ -9,6 +11,8 @@ void ContentManager::LoadContent()
 	currentContent = nullptr;
 
 	AddContent( static_cast<int>( EContent::TITLE ) , make_unique<TitleContent>() );
+	AddContent( static_cast<int>( EContent::SNAKE ) , make_unique<SnakeContent>() );
+	
 
 	ChangeContent( static_cast<int>( EContent::TITLE ) );
 }

@@ -1,4 +1,6 @@
 ﻿#include "GameMaster.h"
+#include "../Service/ScreenService.h"
+#include <cassert>
 
 void GameMaster::Initialize()
 {
@@ -41,4 +43,15 @@ void GameMaster::Shutdown()
 		m_inputService->Clear();
 		m_inputService.reset();
 	}
+}
+
+void GameMaster::SetScreen(ScreenService* screen)
+{
+	m_screen = screen;
+}
+
+ScreenService& GameMaster::GetScreen() const
+{
+	assert(m_screen != nullptr);
+	return *m_screen;
 }

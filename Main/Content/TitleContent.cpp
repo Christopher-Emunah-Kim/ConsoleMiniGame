@@ -4,8 +4,7 @@
 
 void TitleContent::LoadSnakeContent()
 {
-	GAME_MASTER->GetHUD().WriteLine( L"Snake 콘텐츠는 아직 준비 중입니다." );
-	RenderTitleScreen();
+	GAME_MASTER->GetContentManager().ChangeContent(static_cast<int>(EContent::SNAKE));
 }
 
 void TitleContent::ExitGame()

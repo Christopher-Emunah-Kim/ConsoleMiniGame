@@ -7,6 +7,8 @@
 #include "../Main/HUD.h"
 #include "GameWorld.h"
 
+class ScreenService;
+
 class GameMaster final : public Singleton<GameMaster>
 {
 public:
@@ -15,6 +17,9 @@ public:
 
 	void Initialize();
 	void Shutdown();
+
+	void SetScreen( ScreenService* screen );
+	ScreenService& GetScreen() const;
 
 	ContentManager& GetContentManager() const { return *m_contentManager; }
 	InputService& GetInputService() const { return *m_inputService; }
@@ -26,5 +31,7 @@ private:
 	unique_ptr<InputService> m_inputService;
 	unique_ptr<TimeService> m_timeService;
 	unique_ptr<HUD> m_hud;
+
+	ScreenService* m_screen = nullptr;
 };
 

@@ -2,13 +2,21 @@
 #include "../Core/GameMaster.h"
 #include <algorithm>
 
+
+HUD::HUD()
+{
+	m_defaultLayout = FHudLayout();
+	m_layout = m_defaultLayout;
+}
+
 void HUD::Render(ScreenService& screen) const
 {
 	RenderOutFrame( screen );
-	RenderInfoPanel(screen);
+	//RenderInfoPanel(screen);
 	RenderMainPanel(screen);
 	RenderBottomPanel(screen);
 }
+
 
 void HUD::RenderOutFrame( ScreenService& screen ) const
 {
@@ -51,17 +59,10 @@ void HUD::RenderOutFrame( ScreenService& screen ) const
 void HUD::RenderInfoPanel(ScreenService& screen) const
 {
 
-	for (int16 y = 1; y < SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT; ++y)
-	{
-		screen.Draw(0, y, L"│");
-		screen.Draw(PLAYERINFO_PANEL_WIDTH, y, L"│");
-		screen.Draw(SCREEN_WIDTH - 2, y, L"│");
-	}
-
 	screen.Draw(LEFT_MARGIN + 5, 1, L"[ WELCOM TO TRPG ]");
 	screen.Draw((int32)(SCREEN_WIDTH * 0.55f), 1, L" ");
 	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 1, L"───────────────────────────────");
-	screen.Draw(GAME_PANEL_START_X, PLAYER_UI_BASE_Y + 1, L"────────────────────────────────────────────────────────────────────────────────────────────");
+	screen.Draw(m_layout.mainPanelStartX, PLAYER_UI_BASE_Y + 1, L"────────────────────────────────────────────────────────────────────────────────────────────");
 	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 3, L"     [ 플레이어  정보 ]");
 	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 4, L"───────────────────────────────");
 	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 10, L"───────────────────────────────");
@@ -78,18 +79,27 @@ void HUD::RenderInfoPanel(ScreenService& screen) const
 
 void HUD::RenderMainPanel(ScreenService& screen) const
 {
-	int32 messageAreaWidth = SCREEN_WIDTH - GAME_PANEL_START_X - RIGHT_MARGIN;
-	wstring clearLine(messageAreaWidth, L' ');
-
-	for (int32 y = SYSTEM_TEXT_BASE_Y + 1; y < SYSTEM_TEXT_BASE_Y + MAX_LINES; ++y)
+	if ( false == m_layout.useMainTextPanel )
 	{
-		screen.Draw(GAME_PANEL_START_X + 1, y, clearLine);
+		// 게임 화면 등으로 사용할 때는 HUD에서 패널을 덮어쓰지 않음.
+		return;
 	}
 
-	int32 outputY = SYSTEM_TEXT_BASE_Y + 1;
+	const int32 startX = m_layout.mainPanelStartX + 1;
+	const int32 startY = m_layout.mainPanelTopY;
+	const int32 height = m_layout.mainPanelHeight;
+	const int32 messageAreaWidth = max( 0 , SCREEN_WIDTH - m_layout.mainPanelStartX - m_layout.rightMargin );
+	const wstring clearLine( static_cast<size_t>( messageAreaWidth ) , L' ' );
+
+	for ( int32 offsetY = 0; offsetY < height; ++offsetY )
+	{
+		screen.Draw( startX , startY + offsetY , clearLine );
+	}
+
+	int32 outputY = startY;
 	for (size_t i = 0; i < m_mainTextQueue.size(); ++i)
 	{
-		screen.Draw(GAME_PANEL_START_X + 1, outputY, m_mainTextQueue[i]);
+		screen.Draw(startX, outputY, m_mainTextQueue[i]);
 		++outputY;
 	}
 }
@@ -99,7 +109,7 @@ void HUD::RenderBottomPanel(ScreenService& screen) const
 	//screen.Draw(9, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, GAME_MASTER->GetInputService().GetInputBuffer());
 
 	const int32 promptStartX = 9;
-	const int32 maxLength = max( 0 , SCREEN_WIDTH - RIGHT_MARGIN - promptStartX - 1 );
+	const int32 maxLength = max( 0 , SCREEN_WIDTH - m_layout.rightMargin - promptStartX - 1 );
 
 	wstring displayText = m_commandLineText.substr( 0 , static_cast<size_t>( maxLength ) );
 
@@ -125,4 +135,25 @@ void HUD::ClearText()
 void HUD::SetCommandLineText( const wstring& text )
 {
 	m_commandLineText = text;
+}
+
+void HUD::SetLayout( const FHudLayout& layout )
+{
+	m_layout = layout;
+}
+
+void HUD::ResetLayout()
+{
+	m_layout = m_defaultLayout;
+}
+
+FHudViewport HUD::GetGameViewportRect() const
+{
+	FHudViewport viewport{};
+
+	viewport.x = m_layout.mainPanelStartX + 1;
+	viewport.y = m_layout.mainPanelTopY;
+	viewport.width = max( 0 , SCREEN_WIDTH - m_layout.rightMargin - viewport.x );
+	viewport.height = m_layout.mainPanelHeight;
+	return viewport;
 }

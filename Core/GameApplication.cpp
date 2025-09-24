@@ -37,6 +37,7 @@ bool GameApplication::Initialize()
 {
 	m_screen.Init();
 	GAME_MASTER->Initialize();
+	GAME_MASTER->SetScreen( &m_screen );
 	GAME_MASTER->GetContentManager().LoadContent();
 
 	return true;
