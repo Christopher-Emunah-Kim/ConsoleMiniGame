@@ -8,25 +8,14 @@ void TitleContent::LoadSnakeContent()
 	GAME_MASTER->GetHUD().WriteLine( L"Snake 콘텐츠는 아직 준비 중입니다." );
 }
 
+void TitleContent::ExitGame()
+{
+	GAME_MASTER->GetHUD().WriteLine( L"게임을 종료합니다." );
+	exit( 0 );
+}
+
 void TitleContent::OnInit()
 {
-	auto& hud = GAME_MASTER->GetHUD();
-	auto& input = GAME_MASTER->GetInputService();
-
-	input.BindKeyAction(
-		{
-				{static_cast<InputService::InputKeyCode>( L'W' ), [this]()
-						{
-								GAME_MASTER->GetHUD().WriteLine( L"W 키 입력이 감지되었습니다." );
-						}
-				},
-				{InputService::MakeKeyCode( InputService::KEY_PREFIX_EXTENDED, 72 ), [this]() // 72: 방향키 Up 스캔 코드
-						{
-								GAME_MASTER->GetHUD().WriteLine( L"위쪽 방향키 입력이 감지되었습니다." );
-						}
-				}
-		}
-	);
 
 	GAME_MASTER->GetHUD().WriteLine( L"■■■■■  ■          ■      ■  ■■■■■  " );
 	GAME_MASTER->GetHUD().WriteLine( L"■      ■  ■          ■      ■  ■          " );
@@ -53,6 +42,7 @@ void TitleContent::OnUpdate()
 	GAME_MASTER->GetInputService().BindAction(
 		{
 			{L"1", bind(&TitleContent::LoadSnakeContent, this)}
+			,{L"2", bind( &TitleContent::ExitGame, this )}
 		}
 	);
 
@@ -60,6 +50,21 @@ void TitleContent::OnUpdate()
 		{
 			GAME_MASTER->GetHUD().WriteLine( L"Invalid Command in TitleContent" );
 		} 
+	);
+
+	GAME_MASTER->GetInputService().BindKeyAction(
+		{
+				{static_cast<InputService::InputKeyCode>( L'W' ), [this]()
+						{
+								GAME_MASTER->GetHUD().WriteLine( L"W 키 입력이 감지되었습니다." );
+						}
+				},
+				{InputService::MakeKeyCode( InputService::KEY_PREFIX_EXTENDED, 72 ), [this]() // 72: 방향키 Up 스캔 코드
+						{
+								GAME_MASTER->GetHUD().WriteLine( L"위쪽 방향키 입력이 감지되었습니다." );
+						}
+				}
+		}
 	);
 	
 }

@@ -9,6 +9,7 @@ public:
 
 private:
 	void LoadSnakeContent();
+	void ExitGame();
 
 public:
 	virtual void OnInit() override;

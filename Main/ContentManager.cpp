@@ -8,10 +8,9 @@ void ContentManager::LoadContent()
 	contentsMap.clear();
 	currentContent = nullptr;
 
-	ChangeContent( static_cast<int>( EContent::TITLE ) );
 	AddContent( static_cast<int>( EContent::TITLE ) , make_unique<TitleContent>() );
 
-
+	ChangeContent( static_cast<int>( EContent::TITLE ) );
 }
 
 void ContentManager::OnUpdate()

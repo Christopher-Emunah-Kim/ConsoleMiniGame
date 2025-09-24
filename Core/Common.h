@@ -50,9 +50,10 @@ enum class EAreaName {
 };
 
 enum class EContent {
-	INTRO,
 	TITLE,
-	LOAD
+	LOAD,
+	SNAKE,
+	MAZE
 };
 
 // Color code for Windows Console
