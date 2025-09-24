@@ -21,7 +21,6 @@ void GameApplication::Update()
 void GameApplication::Render()
 {
 	m_screen.Clear();
-	//TODO : GAMEINSTANCE 쓸건지 말건지 결정 필요
 	GAME_MASTER->GetContentManager().OnRender();
 	GAME_MASTER->GetHUD().Render( m_screen );
 	m_screen.SwapBuffer();

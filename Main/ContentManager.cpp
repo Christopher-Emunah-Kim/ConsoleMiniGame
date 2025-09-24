@@ -58,7 +58,6 @@ void ContentManager::ChangeContent(int contentId)
 		GAME_MASTER->GetInputService().Clear();
 		GAME_MASTER->GetHUD().ClearText();
 
-
 		currentContent->OnInit();
 	}
 }

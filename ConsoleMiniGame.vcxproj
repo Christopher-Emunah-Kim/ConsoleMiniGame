@@ -130,6 +130,7 @@
     <ClCompile Include="Core\GameWorld.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Main\Content\SnakeContent.cpp" />
     <ClCompile Include="Main\Content\TitleContent.cpp" />
     <ClCompile Include="Main\HUD.cpp" />
     <ClCompile Include="Service\ScreenService.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Core\GameWorld.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Main\Content\SnakeContent.h" />
     <ClInclude Include="Main\Content\TitleContent.h" />
     <ClInclude Include="Main\HUD.h" />
     <ClInclude Include="Service\ScreenService.h" />

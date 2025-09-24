@@ -58,7 +58,6 @@ void HUD::RenderInfoPanel(ScreenService& screen) const
 		screen.Draw(SCREEN_WIDTH - 2, y, L"│");
 	}
 
-	//screen.Draw(0, 0, L"┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐");
 	screen.Draw(LEFT_MARGIN + 5, 1, L"[ WELCOM TO TRPG ]");
 	screen.Draw((int32)(SCREEN_WIDTH * 0.55f), 1, L" ");
 	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 1, L"───────────────────────────────");
@@ -70,11 +69,11 @@ void HUD::RenderInfoPanel(ScreenService& screen) const
 	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 19, L"  [ 플레이어  스테이터스 ]");
 	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 20, L"───────────────────────────────");
 	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 28, L"───────────────────────────────");
-	//screen.Draw(0, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT, L"│─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────│");
+	screen.Draw(0, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT, L"│─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────│");
 	screen.Draw(0, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"│");
 	screen.Draw(SCREEN_WIDTH - 2, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"│");
-	//screen.Draw(0, SCREEN_HEIGHT - 1, L"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘");
-
+	
+	screen.Draw( 2 , SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1 , L"명령 > " );
 }
 
 void HUD::RenderMainPanel(ScreenService& screen) const
@@ -97,7 +96,6 @@ void HUD::RenderMainPanel(ScreenService& screen) const
 
 void HUD::RenderBottomPanel(ScreenService& screen) const
 {
-	screen.Draw(2, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"명령 > ");
 	screen.Draw(9, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, GAME_MASTER->GetInputService().GetInputBuffer());
 }
 
