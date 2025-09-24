@@ -1,4 +1,4 @@
-#include "GameMaster.h"
+﻿#include "GameMaster.h"
 
 void GameMaster::Initialize()
 {
@@ -13,10 +13,18 @@ void GameMaster::Initialize()
 
 	if (!m_gameWorld)
 		m_gameWorld = make_unique<GameWorld>();
+
+	if ( !m_hud )
+		m_hud = make_unique<HUD>();
 }
 
 void GameMaster::Shutdown()
 {
+	if(m_hud)
+	{
+		m_hud.reset();
+	}
+
 	if(m_gameWorld)
 	{
 		m_gameWorld->Release();

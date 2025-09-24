@@ -24,6 +24,7 @@ public:
 	virtual ~HUD() = default;
 
 private:
+	void RenderOutFrame( ScreenService& screen ) const;
 	void RenderInfoPanel(ScreenService& screen) const;
 	void RenderMainPanel(ScreenService& screen) const;
 	void RenderBottomPanel(ScreenService& screen) const;

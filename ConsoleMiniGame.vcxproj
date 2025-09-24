@@ -128,6 +128,7 @@
     <ClCompile Include="Core\GameApplication.cpp" />
     <ClCompile Include="Core\GameMaster.cpp" />
     <ClCompile Include="Core\GameWorld.cpp" />
+    <ClCompile Include="Main\Content\TitleContent.cpp" />
     <ClCompile Include="Main\HUD.cpp" />
     <ClCompile Include="Service\ScreenService.cpp" />
     <ClCompile Include="Main\ContentManager.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="Core\GameApplication.h" />
     <ClInclude Include="Core\GameMaster.h" />
     <ClInclude Include="Core\GameWorld.h" />
+    <ClInclude Include="Main\Content\TitleContent.h" />
     <ClInclude Include="Main\HUD.h" />
     <ClInclude Include="Service\ScreenService.h" />
     <ClInclude Include="Core\Singleton.h" />
