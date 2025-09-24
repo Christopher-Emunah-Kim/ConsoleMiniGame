@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <conio.h>
 #include <iomanip>
+#include <memory>
 
 #include <functional>
 #include <format>

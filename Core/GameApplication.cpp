@@ -15,27 +15,30 @@ void GameApplication::ProcessInput()
 
 void GameApplication::Update()
 {
-	GAME_MASTER->GetWorld().Update();
+	GAME_MASTER->GetContentManager().OnUpdate();
 }
 
 void GameApplication::Render()
 {
 	m_screen.Clear();
 	//TODO : GAMEINSTANCE 쓸건지 말건지 결정 필요
-	//GameInstance::GetInstance()->RenderHud(m_screen);
+	GAME_MASTER->GetContentManager().OnRender();
+	GAME_MASTER->GetHUD().Render( m_screen );
 	m_screen.SwapBuffer();
 }
 
 
 void GameApplication::Release()
 {
-	GAME_MASTER->GetWorld().Release();
+	GAME_MASTER->Shutdown();
+	m_screen.Release();
 }
 
 bool GameApplication::Initialize()
 {
 	m_screen.Init();
-	GAME_MASTER->GetWorld().Init();
+	GAME_MASTER->Initialize();
+	GAME_MASTER->GetContentManager().LoadContent();
 
 	return true;
 }

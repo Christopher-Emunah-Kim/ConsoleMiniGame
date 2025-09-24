@@ -1,22 +1,25 @@
-#pragma once
+﻿#pragma once
 #include "IContent.h"
 #include "../Core/Singleton.h"
-#include <map>
+#include <unordered_map>
+#include <memory>
 
-class ContentManager : public Singleton<ContentManager>
+
+class ContentManager 
 {
 public:
 	void LoadContent();
 	void OnUpdate();
 	void OnRender();
 
-	void AddContent(int contentId, IContent* content);
+	void AddContent(int contentId, unique_ptr<IContent> content);
 	void ChangeContent(int contentId);
 
 	IContent* GetCurrentContent() const { return currentContent; }
 
-private:
-	std::map<int, IContent*> contentsMap;
-	IContent* currentContent = nullptr;
-};
 
+private:
+	std::unordered_map<int, unique_ptr<IContent>> contentsMap;
+	IContent* currentContent = nullptr;
+
+};

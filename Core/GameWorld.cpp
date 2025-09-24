@@ -1,4 +1,4 @@
-#include "GameWorld.h"
+ï»¿#include "GameWorld.h"
 
 GameWorld::~GameWorld()
 {
@@ -78,7 +78,7 @@ void GameWorld::ChangeLevel()
 {
 	if (m_nextLevel)
 	{
-		//ÀÌÈÄ Á¤¸®
+		//ì´í›„ ì •ë¦¬
 	}
 }
 
