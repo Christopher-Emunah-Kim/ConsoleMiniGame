@@ -127,7 +127,9 @@
     <ClCompile Include="ConsoleMiniGame.cpp" />
     <ClCompile Include="Core\GameApplication.cpp" />
     <ClCompile Include="Core\GameMaster.cpp" />
-    <ClCompile Include="Core\GameWorld.cpp" />
+    <ClCompile Include="Core\GameWorld.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Main\Content\TitleContent.cpp" />
     <ClCompile Include="Main\HUD.cpp" />
     <ClCompile Include="Service\ScreenService.cpp" />
@@ -139,7 +141,9 @@
     <ClInclude Include="Core\Common.h" />
     <ClInclude Include="Core\GameApplication.h" />
     <ClInclude Include="Core\GameMaster.h" />
-    <ClInclude Include="Core\GameWorld.h" />
+    <ClInclude Include="Core\GameWorld.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Main\Content\TitleContent.h" />
     <ClInclude Include="Main\HUD.h" />
     <ClInclude Include="Service\ScreenService.h" />
