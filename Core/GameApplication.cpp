@@ -9,7 +9,7 @@ GameApplication::~GameApplication() noexcept
 
 void GameApplication::ProcessInput()
 {
-	GAME_MASTER->GetInputService().ProcessTextInput();
+	GAME_MASTER->GetInputService().Update();
 }
 
 

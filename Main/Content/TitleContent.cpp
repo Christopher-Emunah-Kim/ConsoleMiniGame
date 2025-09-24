@@ -1,11 +1,11 @@
 ﻿#include "TitleContent.h"
-#include "../../Core/Common.h"
 #include "../../Core/GameMaster.h"
 #include "../../Service/InputService.h"
 
 void TitleContent::LoadSnakeContent()
 {
 	GAME_MASTER->GetHUD().WriteLine( L"Snake 콘텐츠는 아직 준비 중입니다." );
+	RenderTitleScreen();
 }
 
 void TitleContent::ExitGame()
@@ -14,58 +14,142 @@ void TitleContent::ExitGame()
 	exit( 0 );
 }
 
+void TitleContent::MoveToPreviousMenu()
+{
+	if ( m_menuItems.empty() )
+	{
+		return;
+	}
+
+	if ( m_selectedIndex == 0 )
+	{
+		m_selectedIndex = m_menuItems.size() - 1;
+	}
+	else
+	{
+		--m_selectedIndex;
+	}
+
+	RenderTitleScreen();
+}
+
+void TitleContent::MoveToNextMenu()
+{
+	if ( m_menuItems.empty() )
+	{
+		return;
+	}
+
+	m_selectedIndex = ( m_selectedIndex + 1 ) % m_menuItems.size();
+
+	RenderTitleScreen();
+}
+
+void TitleContent::SelectMenuItem()
+{
+	if ( m_menuItems.empty() )
+	{
+		return;
+	}
+
+	const FMenuItem& selectedItem = m_menuItems[m_selectedIndex];
+
+	if ( selectedItem.action )
+	{
+		selectedItem.action();
+	}
+}
+
+void TitleContent::InitializeMenu()
+{
+	m_menuItems.clear();
+	m_selectedIndex = 0;
+	m_statusMsg.clear();
+
+	m_menuItems.push_back( { L"1. Snake 게임 시작", bind( &TitleContent::LoadSnakeContent, this ) } );
+	m_menuItems.push_back( { L"2. 게임 종료", bind( &TitleContent::ExitGame, this ) } );
+}
+
+void TitleContent::BindInputActions()
+{
+	InputService& input = GAME_MASTER->GetInputService();
+
+	//Input Mapping for Menu Navigation
+	input.BindKeyAction(
+		{
+				{ static_cast<InputService::InputKeyCode>( 'W' ), bind( &TitleContent::MoveToPreviousMenu, this ) },
+				{ static_cast<InputService::InputKeyCode>( 'A' ), bind( &TitleContent::MoveToPreviousMenu, this ) },
+				{ static_cast<InputService::InputKeyCode>( VK_UP ), bind( &TitleContent::MoveToPreviousMenu, this ) },
+				{ static_cast<InputService::InputKeyCode>( VK_LEFT ), bind( &TitleContent::MoveToPreviousMenu, this ) },
+				{ static_cast<InputService::InputKeyCode>( 'S' ), bind( &TitleContent::MoveToNextMenu, this ) },
+				{ static_cast<InputService::InputKeyCode>( 'D' ), bind( &TitleContent::MoveToNextMenu, this ) },
+				{ static_cast<InputService::InputKeyCode>( VK_DOWN ), bind( &TitleContent::MoveToNextMenu, this ) },
+				{ static_cast<InputService::InputKeyCode>( VK_RIGHT ), bind( &TitleContent::MoveToNextMenu, this ) },
+				{ static_cast<InputService::InputKeyCode>( VK_RETURN ), bind( &TitleContent::SelectMenuItem, this ) },
+		}
+		);
+}
+
+void TitleContent::RenderTitleScreen()
+{
+	HUD& hud = GAME_MASTER->GetHUD();
+	hud.ClearText();
+
+	hud.SetCommandLineText( L"WASD/방향키 : 이동 | Enter : 선택" );
+
+	hud.WriteLine( L"■■■■■  ■          ■      ■  ■■■■■  " );
+	hud.WriteLine( L"■      ■  ■          ■      ■  ■          " );
+	hud.WriteLine( L"■      ■  ■          ■      ■  ■          " );
+	hud.WriteLine( L"■■■■■  ■          ■      ■  ■■■■■  " );
+	hud.WriteLine( L"■          ■          ■      ■          ■  " );
+	hud.WriteLine( L"■          ■          ■      ■          ■  " );
+	hud.WriteLine( L"■          ■■■■■  ■■■■■  ■■■■■  " );
+
+	hud.WriteLine( L"Console Game Pack ver 0.3" );
+	hud.WriteLine( L" " );
+	hud.WriteLine( L" " );
+	hud.WriteLine( L"타이틀 화면입니다." );
+	hud.WriteLine( L"WASD 혹은 방향키로 메뉴를 이동하고 Enter 키로 선택하세요." );
+	hud.WriteLine( L" " );
+
+
+	for ( size_t i = 0; i < m_menuItems.size(); ++i )
+	{
+		if ( i == m_selectedIndex )
+		{
+			hud.WriteLine( L"▶ " + m_menuItems[i].label + L"◀ ");
+		}
+		else
+		{
+			hud.WriteLine( L"  " + m_menuItems[i].label + L" ");
+		}
+	}
+
+	hud.WriteLine( L" " );
+
+	if(!m_statusMsg.empty())
+	{
+		hud.WriteLine( m_statusMsg );
+	}
+
+}
+
 void TitleContent::OnInit()
 {
-
-	GAME_MASTER->GetHUD().WriteLine( L"■■■■■  ■          ■      ■  ■■■■■  " );
-	GAME_MASTER->GetHUD().WriteLine( L"■      ■  ■          ■      ■  ■          " );
-	GAME_MASTER->GetHUD().WriteLine( L"■      ■  ■          ■      ■  ■          " );
-	GAME_MASTER->GetHUD().WriteLine( L"■■■■■  ■          ■      ■  ■■■■■  " );
-	GAME_MASTER->GetHUD().WriteLine( L"■          ■          ■      ■          ■  " );
-	GAME_MASTER->GetHUD().WriteLine( L"■          ■          ■      ■          ■  " );
-	GAME_MASTER->GetHUD().WriteLine( L"■          ■■■■■  ■■■■■  ■■■■■  " );
-
-
-	GAME_MASTER->GetHUD().WriteLine( L"Console Game Pack ver 0.3" );
-	GAME_MASTER->GetHUD().WriteLine( L" " );
-	GAME_MASTER->GetHUD().WriteLine( L" " );
-	GAME_MASTER->GetHUD().WriteLine( L"타이틀 화면입니다." );
-	GAME_MASTER->GetHUD().WriteLine( L"시작하시려면 1번, 종료하시려면 2번을 눌러주세요." );
+	InitializeMenu();
+	BindInputActions();
+	RenderTitleScreen();
 }
 
 void TitleContent::OnRelease()
 {
+	m_menuItems.clear();
+	m_statusMsg.clear();
 }
 
 void TitleContent::OnUpdate()
 {
-	GAME_MASTER->GetInputService().BindAction(
-		{
-			{L"1", bind(&TitleContent::LoadSnakeContent, this)}
-			,{L"2", bind( &TitleContent::ExitGame, this )}
-		}
-	);
-
-	GAME_MASTER->GetInputService().BindActionOnInputError([this]()
-		{
-			GAME_MASTER->GetHUD().WriteLine( L"Invalid Command in TitleContent" );
-		} 
-	);
-
-	GAME_MASTER->GetInputService().BindKeyAction(
-		{
-				{static_cast<InputService::InputKeyCode>( L'W' ), [this]()
-						{
-								GAME_MASTER->GetHUD().WriteLine( L"W 키 입력이 감지되었습니다." );
-						}
-				},
-				{InputService::MakeKeyCode( InputService::KEY_PREFIX_EXTENDED, 72 ), [this]() // 72: 방향키 Up 스캔 코드
-						{
-								GAME_MASTER->GetHUD().WriteLine( L"위쪽 방향키 입력이 감지되었습니다." );
-						}
-				}
-		}
-	);
+	
 	
 }
 

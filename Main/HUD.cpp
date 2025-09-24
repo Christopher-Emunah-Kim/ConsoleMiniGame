@@ -96,7 +96,14 @@ void HUD::RenderMainPanel(ScreenService& screen) const
 
 void HUD::RenderBottomPanel(ScreenService& screen) const
 {
-	screen.Draw(9, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, GAME_MASTER->GetInputService().GetInputBuffer());
+	//screen.Draw(9, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, GAME_MASTER->GetInputService().GetInputBuffer());
+
+	const int32 promptStartX = 9;
+	const int32 maxLength = max( 0 , SCREEN_WIDTH - RIGHT_MARGIN - promptStartX - 1 );
+
+	wstring displayText = m_commandLineText.substr( 0 , static_cast<size_t>( maxLength ) );
+
+	screen.Draw( promptStartX , SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1 , displayText );
 }
 
 void HUD::WriteLine(const wstring& line)
@@ -112,4 +119,10 @@ void HUD::WriteLine(const wstring& line)
 void HUD::ClearText()
 {
 	m_mainTextQueue.clear();
+	m_commandLineText.clear();
+}
+
+void HUD::SetCommandLineText( const wstring& text )
+{
+	m_commandLineText = text;
 }

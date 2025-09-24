@@ -33,11 +33,13 @@ public:
 	void Render(ScreenService& screen) const;
 	void WriteLine(const wstring& line);
 	void ClearText();
+	void SetCommandLineText( const wstring& text );
 
 	//void UpdateHudData(const wstring& contentName, const wstring& playerName);
 
 private:
 	FHudData m_hudData;
 	deque<wstring> m_mainTextQueue;
+	wstring m_commandLineText;
 };
 
