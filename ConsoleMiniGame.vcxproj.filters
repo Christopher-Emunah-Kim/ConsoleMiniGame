@@ -33,9 +33,6 @@
     <ClCompile Include="Core\GameMaster.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core\GameWorld.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Main\ContentManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -75,9 +72,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\GameMaster.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\GameWorld.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Main\IContent.h">

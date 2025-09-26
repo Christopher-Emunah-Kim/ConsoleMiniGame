@@ -130,6 +130,13 @@ void TitleContent::RenderTitleScreen()
 
 void TitleContent::OnInit()
 {
+	HUD& hud = GAME_MASTER->GetHUD();
+
+	FHudLayout layout = hud.GetDefaultLayout();
+	layout.bEnableMainPanel = true;
+	layout.bEnableBottomPanel = true;
+	hud.SetLayout( layout );
+
 	InitializeMenu();
 	BindInputActions();
 	RenderTitleScreen();

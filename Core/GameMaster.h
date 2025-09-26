@@ -5,7 +5,6 @@
 #include "../Service/TimeService.h"
 #include "../Main/ContentManager.h"
 #include "../Main/HUD.h"
-#include "GameWorld.h"
 
 class ScreenService;
 

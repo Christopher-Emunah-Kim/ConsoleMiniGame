@@ -50,6 +50,7 @@ void SnakeContent::OnInit()
 	FHudLayout layout = hud.GetDefaultLayout();
 
 	layout.bEnableMainPanel = false;
+	layout.bEnableBottomPanel = true;
 
 	hud.SetLayout( layout );
 	hud.SetCommandLineText( L"WASD/방향키 : 이동 | R :  재시작 | Esc : 타이틀로" );
