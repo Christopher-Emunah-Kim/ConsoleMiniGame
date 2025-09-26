@@ -79,14 +79,14 @@ void DungeonRenderer::RenderUI( ScreenService& screen , const DungeonGameState& 
 	const wstring hpText = L"HP : " + std::to_wstring( player.GetCurrentHP() ) + L" / " + std::to_wstring( info.maxHP );
 	const wstring posText = L"위치 : (" + std::to_wstring( info.position.x ) + L", " + std::to_wstring( info.position.y ) + L")";
 	
-	screen.Draw( DUNGEON_LEFT_MARGIN , 1, hpText );
-	screen.Draw( DUNGEON_LEFT_MARGIN , 2 , posText );
+	screen.Draw( DUNGEON_LEFT_MARGIN , 2, hpText );
+	screen.Draw( DUNGEON_LEFT_MARGIN , 3 , posText );
 
 	const wstring& status = gameState.GetStatusMessage();
 
 	if ( !status.empty() )
 	{
-		screen.Draw( DUNGEON_LEFT_MARGIN , 3 , status );
+		screen.Draw( DUNGEON_LEFT_MARGIN , 4 , status );
 	}
 
 	if ( gameState.IsGameOver() )
@@ -94,7 +94,7 @@ void DungeonRenderer::RenderUI( ScreenService& screen , const DungeonGameState& 
 		const wstring resultText = gameState.HasPlayerEscaped()
 			? L"던전 탈출 성공! R 키로 재도전, Q 키로 종료."
 			: L"전투에서 패배했습니다. R 키로 재도전하세요.";
-		screen.Draw( DUNGEON_LEFT_MARGIN , 4 , resultText );
+		screen.Draw( DUNGEON_LEFT_MARGIN , 5 , resultText );
 	}
 }
 

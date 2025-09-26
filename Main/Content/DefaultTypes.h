@@ -2,7 +2,7 @@
 #include "../../Core/Common.h"
 
 
-constexpr int32 BOARD_TOP_MARGIN = 6;
+constexpr int32 BOARD_TOP_MARGIN = 8;
 
 enum class EDirection : int8
 {

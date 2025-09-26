@@ -16,6 +16,7 @@ bool DungeonGameState::UpdatePlayerPosition()
 	const FCoord currentPos = m_player.GetCharacterInfo().position;
 	FCoord nextPos = currentPos;
 
+	m_currentDirection = m_nextDirection;
 
 	switch ( m_currentDirection )
 	{
@@ -53,7 +54,7 @@ bool DungeonGameState::UpdatePlayerPosition()
 		return false;
 	}
 
-	m_currentDirection = m_nextDirection;
+	
 	m_player.GetCharacterInfo().position = nextPos;
 
 	HandleCurrentCellEvent( nextPos , cellType );
