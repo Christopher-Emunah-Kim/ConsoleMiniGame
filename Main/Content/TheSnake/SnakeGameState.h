@@ -42,7 +42,7 @@ private:
 	bool m_bHasFood = false;
 	bool m_bIsGameOver = false;
 
-	int32 m_gameAreaWidth = 40;
-	int32 m_gameAreaHeight = 40;
+	int32 m_gameAreaWidth = SNAKEGAME_AREA_WIDTH;
+	int32 m_gameAreaHeight = SNAKEGAME_AREA_HEIGHT;
 };
 

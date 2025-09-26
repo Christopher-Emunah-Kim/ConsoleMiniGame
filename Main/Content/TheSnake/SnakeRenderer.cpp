@@ -16,59 +16,66 @@ void SnakeRenderer::RenderGame( ScreenService& screen , const SnakeGameState& ga
 	HUD& hud = GAME_MASTER->GetHUD();
 
 	const FHudViewport viewport = hud.GetGameViewportRect();
-	const int32 blankWidth = max( 0 , viewport.width );
+	
+	const int32 boardWidth = gameState.GetWidth();
+	const int32 boardHeight = gameState.GetHeight();
+
+	const int32 boardPixelWidth = boardWidth * CELL_WIDTH;
+	const int32 boardTop = viewport.y + BOARD_TOP_MARGIN;
+	const int32 boardBottom = boardTop + boardHeight;
+	const int32 boardLeft = viewport.x + max( 0 , ( viewport.width - boardPixelWidth ) / 2 );
+	const int32 boardRight = boardLeft + boardPixelWidth;
+
+
+	/// Clear Viewport
+	const int32 blankWidth = max( viewport.width , boardPixelWidth + CELL_WIDTH * 2);
+	const int32 blankHeight = max( viewport.height , boardHeight + BOARD_TOP_MARGIN * 2 );
 	const wstring blankLine( static_cast<size_t>( blankWidth ) , L' ' );
 
-	for ( int32 offsetY = 0; offsetY < gameState.GetHeight(); ++offsetY )
+	for ( int32 offsetY = 0; offsetY < blankHeight; ++offsetY )
 	{
 		screen.Draw( viewport.x , viewport.y + offsetY , blankLine );
 	}
 
 	// Draw Borders
-	const int32 boardPixelWidth = gameState.GetWidth() * CELL_WIDTH;
-	const int32 boardTop = viewport.y + BOARD_TOP_MARGIN;
-	const int32 boardBottom = viewport.y + viewport.height;
-	const int32 boardLeft = viewport.x + max( 0 , ( viewport.width - boardPixelWidth ) / 2 );
-	const int32 boardRight = boardLeft + boardPixelWidth;
+	const int32 topBorderY = boardTop - 1;
+	const int32 bottomBorderY = boardBottom;
 
-	if ( boardTop >= boardBottom )
-	{
-		return;
-	}
-
-	for ( int32 x = 0; x < gameState.GetWidth(); ++x )
+	//Top & Bottom Borders
+	for ( int32 x = 0; x < boardWidth; ++x )
 	{
 		const int32 drawX = boardLeft + x * CELL_WIDTH;
-		const int32 topY = boardTop - 1;
-		const int32 bottomY = boardBottom + gameState.GetHeight();
 
-		if ( topY >= viewport.y )
+		if ( topBorderY >= 0 )
 		{
-			screen.Draw( drawX , topY , L"■" , GREEN );
+			screen.Draw( drawX , topBorderY , L"■" , GREEN );
 		}
 
-		if ( bottomY < boardBottom )
+		if ( bottomBorderY < SCREEN_HEIGHT )
 		{
-			screen.Draw( drawX , bottomY , L"■" , GREEN );
+			screen.Draw( drawX , bottomBorderY , L"■" , GREEN );
 		}
 	}
 
-	for ( int32 y = 0; y < gameState.GetHeight(); ++y )
+	//Left & Right Borders
+	const int32 leftBorderX = boardLeft - CELL_WIDTH;
+	const int32 rightBorderX = boardRight;
+
+	for ( int32 y = 0; y < boardHeight; ++y )
 	{
 		const int32 drawY = boardTop + y;
-		const int32 leftX = boardLeft - CELL_WIDTH;
-		const int32 rightX = boardLeft + gameState.GetWidth() * CELL_WIDTH;
 
-		if ( leftX >= viewport.x )
+		if ( leftBorderX >= 0 )
 		{
-			screen.Draw( leftX , drawY , L"■" , GREEN );
+			screen.Draw( leftBorderX , drawY , L"■" , GREEN );
 		}
-		if ( rightX < viewport.x + viewport.width )
+		if ( rightBorderX < SCREEN_WIDTH )
 		{
-			screen.Draw( rightX , drawY , L"■" , GREEN );
+			screen.Draw( rightBorderX , drawY , L"■" , GREEN );
 		}
 	}
 
+	// Draw Snake & Food
 	for ( size_t idx = 0; idx < gameState.GetSnake().size(); ++idx )
 	{
 		const FCoord& segment = gameState.GetSnake()[ idx ];
@@ -76,7 +83,7 @@ void SnakeRenderer::RenderGame( ScreenService& screen , const SnakeGameState& ga
 		const int32 drawX = boardLeft + segment.x * CELL_WIDTH;
 		const int32 drawY = boardTop + segment.y;
 
-		if ( drawX < viewport.x || drawX >= boardRight || drawY < boardTop || drawY >= boardBottom )
+		if ( drawX < boardLeft || drawX >= boardRight || drawY < boardTop || drawY >= boardBottom )
 		{
 			continue;
 		}
@@ -96,7 +103,7 @@ void SnakeRenderer::RenderGame( ScreenService& screen , const SnakeGameState& ga
 		const int32 drawX = boardLeft + gameState.GetFood().x * CELL_WIDTH;
 		const int32 drawY = boardTop + gameState.GetFood().y;
 
-		if ( drawX >= viewport.x && drawX < boardRight && drawY >= boardTop && drawY < boardBottom )
+		if ( drawX >= boardLeft && drawX < boardRight && drawY >= boardTop && drawY < boardBottom )
 		{
 			screen.Draw( drawX , drawY , L"★" , BLUE );
 		}

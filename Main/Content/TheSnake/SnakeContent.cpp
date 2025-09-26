@@ -37,6 +37,7 @@ void SnakeContent::ResetGame()
 	m_gameState.Reset();
 }
 
+
 void SnakeContent::RequestExitToTitle()
 {
 	m_bRequestExitToTitle = true;
