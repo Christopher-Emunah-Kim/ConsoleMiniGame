@@ -60,6 +60,15 @@
     <ClCompile Include="Main\Content\TheDungeon\DungeonRenderer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Main\Content\TheDungeon\DungeonObjects\DungeonPlayer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Content\TheDungeon\DungeonObjects\BattleCharacter.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Content\TheDungeon\DungeonObjects\DungeonMonster.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\GameApplication.h">
@@ -120,6 +129,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Main\Content\DefaultTypes.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheDungeon\DungeonObjects\DungeonPlayer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheDungeon\DungeonObjects\BattleCharacter.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheDungeon\DungeonObjects\DungeonMonster.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
