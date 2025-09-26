@@ -42,13 +42,6 @@ typedef unsigned __int64    uint64;  //0~18446744073709551615
 using namespace std;
 using namespace std::chrono;
 
-enum class EAreaName {
-	TOWN,
-	FOREST,
-	CAVE,
-	CASTLE
-};
-
 enum class EContent {
 	TITLE,
 	LOAD,

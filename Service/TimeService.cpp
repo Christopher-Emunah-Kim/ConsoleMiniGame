@@ -1,4 +1,4 @@
-#include "TimeService.h"
+﻿#include "TimeService.h"
 
 void TimeService::Init()
 {
@@ -7,7 +7,7 @@ void TimeService::Init()
 
 bool TimeService::CanUpdate()
 {
-	TimePoint current = high_resolution_clock::now();
+	TimePoint current = steady_clock::now();
 
 	duration<float> delta = current - m_prevTimePoint;
 
@@ -16,7 +16,6 @@ bool TimeService::CanUpdate()
 		return false;
 	}
 
-	m_deltaTime = delta.count();
 	m_prevTimePoint = current;
 
 	return true;

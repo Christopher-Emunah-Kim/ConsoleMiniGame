@@ -155,5 +155,6 @@ FHudViewport HUD::GetGameViewportRect() const
 	viewport.y = m_layout.mainPanelTopY;
 	viewport.width = max( 0 , SCREEN_WIDTH - m_layout.rightMargin - viewport.x );
 	viewport.height = m_layout.mainPanelHeight;
+
 	return viewport;
 }

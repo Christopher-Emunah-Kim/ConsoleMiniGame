@@ -10,7 +10,7 @@ void TitleContent::LoadSnakeContent()
 void TitleContent::ExitGame()
 {
 	GAME_MASTER->GetHUD().WriteLine( L"게임을 종료합니다." );
-	exit( 0 );
+	GAME_MASTER->RequestQuit();
 }
 
 void TitleContent::MoveToPreviousMenu()
@@ -63,7 +63,6 @@ void TitleContent::InitializeMenu()
 {
 	m_menuItems.clear();
 	m_selectedIndex = 0;
-	m_statusMsg.clear();
 
 	m_menuItems.push_back( { L"1. Snake 게임 시작", bind( &TitleContent::LoadSnakeContent, this ) } );
 	m_menuItems.push_back( { L"2. 게임 종료", bind( &TitleContent::ExitGame, this ) } );
@@ -126,10 +125,6 @@ void TitleContent::RenderTitleScreen()
 
 	hud.WriteLine( L" " );
 
-	if(!m_statusMsg.empty())
-	{
-		hud.WriteLine( m_statusMsg );
-	}
 
 }
 
@@ -143,17 +138,16 @@ void TitleContent::OnInit()
 void TitleContent::OnRelease()
 {
 	m_menuItems.clear();
-	m_statusMsg.clear();
 }
 
 void TitleContent::OnUpdate()
 {
-	
-	
+	//No periodic updates needed for title screen
 }
 
 void TitleContent::OnRender()
 {
+	//Rendering is handled by HUD, so no additional rendering logic is needed here
 }
 
 

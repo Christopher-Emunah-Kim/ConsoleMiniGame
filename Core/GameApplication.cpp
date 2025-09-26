@@ -48,8 +48,7 @@ void GameApplication::Run()
 	TimeService& timeService = GAME_MASTER->GeteTimeService();
 	timeService.Init();
 
-	//while (!GameInstance()->ShouldQuit())
-	while (true)
+	while (!GAME_MASTER->ShoutQuit())
 	{
 		if (timeService.CanUpdate())
 		{

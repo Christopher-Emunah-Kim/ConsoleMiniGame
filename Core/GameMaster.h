@@ -18,6 +18,9 @@ public:
 	void Initialize();
 	void Shutdown();
 
+	void RequestQuit();
+	bool ShoutQuit() const;
+
 	void SetScreen( ScreenService* screen );
 	ScreenService& GetScreen() const;
 
@@ -33,5 +36,7 @@ private:
 	unique_ptr<HUD> m_hud;
 
 	ScreenService* m_screen = nullptr;
+
+	bool m_bShouldQuit = false;
 };
 

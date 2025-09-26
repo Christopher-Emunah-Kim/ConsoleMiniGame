@@ -15,17 +15,30 @@ ConsoleMiniGame
 
 #클래스 설계
 - GameApplication: 게임의 메인 애플리케이션 클래스.
+  ㄴ 스크린 서비스 초기화, 콘텐츠 로딩, 메인 루프 실행
+
 - GameMaster: 게임의 전반적인 흐름을 관리하는 클래스.
+  ㄴ 각종 서비스 객체 생성/파괴, 스크린 연결, 콘텐츠 전환
+
 - Singleton : 싱글톤 패턴을 구현한 클래스.
+
 - Common : 공통 기능을 제공하는 클래스.
 
 - InputService: 사용자 입력을 처리하는 클래스.
-- ScreenService: 콘솔 화면 출력을 담당하는 클래스.
+  ㄴ 키 바인딩, 입력 폴링 전담
+
+- ScreenService: 콘솔 화면 출력을 담당하는 클래스
+  ㄴ 콘솔 버퍼 관리, 더블 버퍼링, 문자 출력 등 렌더리 전담
+
 - TimeService: 시간 관련 기능을 제공하는 클래스.
 
-- IContent: 게임 콘텐츠 인터페이스.
+
 - HUD: 게임의 HUD(Heads-Up Display)를 관리하는 클래스.
+  ㄴ 화면 레이아웃, 텍스트 출력 버퍼
+  
+- IContent: 게임 콘텐츠 인터페이스.
 - ContentManager: 게임 콘텐츠를 관리하는 클래스.
+  ㄴ 게임컨텐츠 상태 전환 및 수명주기 관리
 
 #메인 컨텐츠
 - TitleContent: 게임의 타이틀 화면

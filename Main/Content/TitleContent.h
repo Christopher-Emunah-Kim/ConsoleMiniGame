@@ -16,14 +16,16 @@ private:
 	};
 
 	void LoadSnakeContent();
+
 	void ExitGame();
 
+	void InitializeMenu();
 	void MoveToPreviousMenu();
 	void MoveToNextMenu();
 	void SelectMenuItem();
 
-	void InitializeMenu();
 	void BindInputActions();
+
 	void RenderTitleScreen();
 
 public:
@@ -35,6 +37,5 @@ public:
 private:
 	vector<FMenuItem> m_menuItems;
 	size_t m_selectedIndex = 0;
-	wstring m_statusMsg;
 };
 

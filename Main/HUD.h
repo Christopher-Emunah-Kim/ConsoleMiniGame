@@ -11,12 +11,6 @@ constexpr __int16 SYSTEM_TEXT_BASE_Y = 3;
 
 class ScreenService;
 
-struct FHudData final
-{
-	wstring contentName;
-	wstring playerName;
-};
-
 struct FHudLayout final
 {
 	int32 infoPanelWidth = PLAYERINFO_PANEL_WIDTH;
@@ -62,9 +56,9 @@ public:
 	FHudViewport GetGameViewportRect() const;
 
 private:
-	FHudData m_hudData;
 	FHudLayout m_layout;
 	FHudLayout m_defaultLayout;
+
 	deque<wstring> m_mainTextQueue;
 	wstring m_commandLineText;
 };

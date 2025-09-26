@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Core/Common.h"
 
 using TimePoint = steady_clock::time_point;
@@ -14,7 +14,5 @@ public:
 
 private:
 	TimePoint m_prevTimePoint{};
-	float m_deltaTime{ 0.0f };
-	float m_timeScale{ 1.0f };
 };
 

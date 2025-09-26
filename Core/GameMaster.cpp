@@ -45,6 +45,16 @@ void GameMaster::Shutdown()
 	}
 }
 
+void GameMaster::RequestQuit()
+{
+	m_bShouldQuit = true;
+}
+
+bool GameMaster::ShoutQuit() const
+{
+	return m_bShouldQuit;
+}
+
 void GameMaster::SetScreen(ScreenService* screen)
 {
 	m_screen = screen;
