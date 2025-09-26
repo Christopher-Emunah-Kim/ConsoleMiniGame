@@ -23,4 +23,24 @@ struct FCharacterInfo final
 	int8 defense;
 	int8 agility;
 	int16 maxHP;
-};;
+};
+
+struct FDungeonGeneratingParams final
+{
+	int32 width = DUNGEON_AREA_WIDTH;
+	int32 height = DUNGEON_AREA_HEIGHT;
+	double wallDensity = 0.38;
+	double monsterProb = 0.07;
+	double	itemProb = 0.04;
+};
+
+enum Cell : int8
+{
+	PATH = 0 ,
+	WALL = 1 ,
+	START = 2 ,
+	MONSTER = 3,
+	ITEM = 4,
+	EXIT = 5
+};
+

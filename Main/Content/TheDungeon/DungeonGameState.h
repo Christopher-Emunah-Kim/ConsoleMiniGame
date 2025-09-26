@@ -1,11 +1,14 @@
 ﻿#pragma once
 #include "../DefaultTypes.h"
+#include "DungeonContentType.h"
 #include "DungeonObjects/DungeonPlayer.h"
 
 class DungeonGameState
 {
 private:
 	void UpdatePlayerPosition();
+	vector<vector<int>> GenerateDungeonMap( const FDungeonGeneratingParams& params );
+	void CarveLPath( vector<vector<int>>& grid );
 
 public:
 	void Initialize( int32 areaWidth , int32 areaHeight );
