@@ -1,104 +1,105 @@
 # ConsoleMiniGame
 ConsoleMiniGame
 
-1. °³¿ä ¹× ÀüÃ¼ Æ¯Â¡
-- ÄÜ¼Ö ¾ÖÇÃ¸®ÄÉÀÌ¼ÇÀº main¿¡¼­ ÇÑ±¹¾î ·ÎÄ¶À» ¼³Á¤ÇÏ°í GameApplicationÀ» ±¸µ¿ÇØ ÃÊ±âÈ­¿Í ¸ÞÀÎ ·çÇÁ¸¦ ¼öÇàÇÕ´Ï´Ù.
+1. ê°œìš” ë° ì „ì²´ íŠ¹ì§•
+- ì½˜ì†” ì• í”Œë¦¬ì¼€ì´ì…˜ì€ mainì—ì„œ í•œêµ­ì–´ ë¡œìº˜ì„ ì„¤ì •í•˜ê³  GameApplicationì„ êµ¬ë™í•´ ì´ˆê¸°í™”ì™€ ë©”ì¸ ë£¨í”„ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 
-- GameApplicationÀº ÀÔ·Â Ã³¸®, ¾÷µ¥ÀÌÆ®, ·»´õ¸µ, Á¾·á Á¤¸®¸¦ ¼¼ºÐÈ­ÇÏ°í, GameMaster°¡ Á¦°øÇÏ´Â ¼­ºñ½ºµéÀ» È£ÃâÇÏ´Â °ÔÀÓ ·çÇÁÀÇ ÇãºêÀÔ´Ï´Ù.
+- GameApplicationì€ ìž…ë ¥ ì²˜ë¦¬, ì—…ë°ì´íŠ¸, ë Œë”ë§, ì¢…ë£Œ ì •ë¦¬ë¥¼ ì„¸ë¶„í™”í•˜ê³ , GameMasterê°€ ì œê³µí•˜ëŠ” ì„œë¹„ìŠ¤ë“¤ì„ í˜¸ì¶œí•˜ëŠ” ê²Œìž„ ë£¨í”„ì˜ í—ˆë¸Œìž…ë‹ˆë‹¤.
 
-- GameMaster´Â ½Ì±ÛÅÏÀ¸·Î ÀÔ·Â¡¤½Ã°£¡¤ÄÜÅÙÃ÷¡¤HUD ¼­ºñ½º¸¦ ¼ÒÀ¯ÇÏ°í È­¸é ¼­ºñ½º Æ÷ÀÎÅÍ¸¦ ÁÖÀÔ¹Þ¾Æ Àü¿ª »óÅÂ¸¦ °ü¸®ÇÕ´Ï´Ù.
+- GameMasterëŠ” ì‹±ê¸€í„´ìœ¼ë¡œ ìž…ë ¥Â·ì‹œê°„Â·ì½˜í…ì¸ Â·HUD ì„œë¹„ìŠ¤ë¥¼ ì†Œìœ í•˜ê³  í™”ë©´ ì„œë¹„ìŠ¤ í¬ì¸í„°ë¥¼ ì£¼ìž…ë°›ì•„ ì „ì—­ ìƒíƒœë¥¼ ê´€ë¦¬í•©ë‹ˆë‹¤.
 
-- ScreenService´Â ´õºí ¹öÆÛ ±â¹ÝÀÇ ÄÜ¼Ö Ãâ·Â, Ã¢ Å©±â °íÁ¤, ÇÑ±Û µî Àü°¢ ¹®ÀÚÀÇ Æø º¸Á¤ µîÀ» ´ã´çÇØ ±ú²ýÇÑ È­¸é ÀüÈ¯À» ±¸ÇöÇÕ´Ï´Ù.
+- ScreenServiceëŠ” ë”ë¸” ë²„í¼ ê¸°ë°˜ì˜ ì½˜ì†” ì¶œë ¥, ì°½ í¬ê¸° ê³ ì •, í•œê¸€ ë“± ì „ê° ë¬¸ìžì˜ í­ ë³´ì • ë“±ì„ ë‹´ë‹¹í•´ ê¹¨ë—í•œ í™”ë©´ ì „í™˜ì„ êµ¬í˜„í•©ë‹ˆë‹¤.
 
-- InputService´Â Å°º° ÄÝ¹é ¹ÙÀÎµù°ú 0.1ÃÊ µð¹Ù¿î½º¸¦ Á¦°øÇØ Å° ¹Ýº¹À» Á¦¾îÇÏ¸ç, ÄÜÅÙÃ÷ ÀüÈ¯ ½Ã ¹ÙÀÎµùÀ» Àç±¸¼ºÇÕ´Ï´Ù.
+- InputServiceëŠ” í‚¤ë³„ ì½œë°± ë°”ì¸ë”©ê³¼ 0.1ì´ˆ ë””ë°”ìš´ìŠ¤ë¥¼ ì œê³µí•´ í‚¤ ë°˜ë³µì„ ì œì–´í•˜ë©°, ì½˜í…ì¸  ì „í™˜ ì‹œ ë°”ì¸ë”©ì„ ìž¬êµ¬ì„±í•©ë‹ˆë‹¤.
 
-- TimeService´Â 60 FPS ±â¹ÝÀÇ Æ½ °£°ÝÀ» °è»êÇØ ¾÷µ¥ÀÌÆ® Å¸ÀÌ¹ÖÀ» Á¦¾îÇÕ´Ï´Ù.
+- TimeServiceëŠ” 60 FPS ê¸°ë°˜ì˜ í‹± ê°„ê²©ì„ ê³„ì‚°í•´ ì—…ë°ì´íŠ¸ íƒ€ì´ë°ì„ ì œì–´í•©ë‹ˆë‹¤.
 
-- HUD´Â ¿Ü°û ÇÁ·¹ÀÓ, º»¹® ÆÐ³Î, ¸í·É ÆÐ³Î ·¹ÀÌ¾Æ¿ôÀ» °ü¸®ÇÏ¸ç ÅØ½ºÆ® Å¥¿Í Ä¿¸Çµå ¶óÀÎ Ãâ·ÂÀ» Áö¿øÇÕ´Ï´Ù.
+- HUDëŠ” ì™¸ê³½ í”„ë ˆìž„, ë³¸ë¬¸ íŒ¨ë„, ëª…ë ¹ íŒ¨ë„ ë ˆì´ì•„ì›ƒì„ ê´€ë¦¬í•˜ë©° í…ìŠ¤íŠ¸ íì™€ ì»¤ë§¨ë“œ ë¼ì¸ ì¶œë ¥ì„ ì§€ì›í•©ë‹ˆë‹¤.
 
 
 
-2. ÄÁÅÙÃ÷ ±¸¼º
-- ContentManager´Â Å¸ÀÌÆ², ½º³×ÀÌÅ©, ´øÀü ÄÜÅÙÃ÷¸¦ ·ÎµåÇÏ°í ÀüÈ¯ ½Ã ÇöÀç ÄÜÅÙÃ÷ÀÇ ÇØÁ¦¡¤ÃÊ±âÈ­¿Í ÀÔ·Â/HUD ¸®¼ÂÀ» ¼öÇàÇÕ´Ï´Ù.
+2. ì»¨í…ì¸  êµ¬ì„±
+- ContentManagerëŠ” íƒ€ì´í‹€, ìŠ¤ë„¤ì´í¬, ë˜ì „ ì½˜í…ì¸ ë¥¼ ë¡œë“œí•˜ê³  ì „í™˜ ì‹œ í˜„ìž¬ ì½˜í…ì¸ ì˜ í•´ì œÂ·ì´ˆê¸°í™”ì™€ ìž…ë ¥/HUD ë¦¬ì…‹ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 
 
 2.1 Title
-- TitleContent´Â ¸Þ´º Ç×¸ñ(½º³×ÀÌÅ©, ´øÀü, Á¾·á)À» ±¸¼ºÇØ Å°º¸µå ³»ºñ°ÔÀÌ¼Ç ¹× ¼±ÅÃ ÄÝ¹éÀ» ¹ÙÀÎµùÇÏ°í, HUD¿¡ ¾Æ½ºÅ° ¾ÆÆ®¿Í ¾È³» ¹®±¸¸¦ Ãâ·ÂÇÕ´Ï´Ù.
+- TitleContentëŠ” ë©”ë‰´ í•­ëª©(ìŠ¤ë„¤ì´í¬, ë˜ì „, ì¢…ë£Œ)ì„ êµ¬ì„±í•´ í‚¤ë³´ë“œ ë‚´ë¹„ê²Œì´ì…˜ ë° ì„ íƒ ì½œë°±ì„ ë°”ì¸ë”©í•˜ê³ , HUDì— ì•„ìŠ¤í‚¤ ì•„íŠ¸ì™€ ì•ˆë‚´ ë¬¸êµ¬ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
 
 
 2.2 THE SNAKE
--  SnakeContent´Â ±âº» º¸µå Å©±â¡¤ÀÌµ¿ ¼Óµµ¸¦ ¼³Á¤ÇÏ°í ¹æÇâ ÀüÈ¯, Àç½ÃÀÛ, Å¸ÀÌÆ² º¹±Í ÀÔ·ÂÀ» ¹ÙÀÎµùÇÕ´Ï´Ù.
+-  SnakeContentëŠ” ê¸°ë³¸ ë³´ë“œ í¬ê¸°Â·ì´ë™ ì†ë„ë¥¼ ì„¤ì •í•˜ê³  ë°©í–¥ ì „í™˜, ìž¬ì‹œìž‘, íƒ€ì´í‹€ ë³µê·€ ìž…ë ¥ì„ ë°”ì¸ë”©í•©ë‹ˆë‹¤.
 
--  SnakeGameState´Â ¹ì ¸Ó¸® ÀÌµ¿, Ãæµ¹ ÆÇÁ¤, ¸ÔÀÌ »ý¼º, Á¡¼ö °è»êÀ» Ã³¸®ÇÏ¸ç, ÀÌµ¿ ÁÖ±â¸¦ ½Ã°£ ±â¹ÝÀ¸·Î Á¦¾îÇÕ´Ï´Ù.
+-  SnakeGameStateëŠ” ë±€ ë¨¸ë¦¬ ì´ë™, ì¶©ëŒ íŒì •, ë¨¹ì´ ìƒì„±, ì ìˆ˜ ê³„ì‚°ì„ ì²˜ë¦¬í•˜ë©°, ì´ë™ ì£¼ê¸°ë¥¼ ì‹œê°„ ê¸°ë°˜ìœ¼ë¡œ ì œì–´í•©ë‹ˆë‹¤.
 
--  SnakeRenderer´Â HUD°¡ Á¦°øÇÏ´Â ºäÆ÷Æ®¿¡ º¸µå, °æ°è¼±, ¹ì/¸ÔÀÌ, Á¡¼öÆÇÀ» ±×¸³´Ï´Ù.
+-  SnakeRendererëŠ” HUDê°€ ì œê³µí•˜ëŠ” ë·°í¬íŠ¸ì— ë³´ë“œ, ê²½ê³„ì„ , ë±€/ë¨¹ì´, ì ìˆ˜íŒì„ ê·¸ë¦½ë‹ˆë‹¤.
 
 
 2.3 DUNGEON
-- DungeonContent´Â ´øÀü ÀÌµ¿¡¤Àç½ÃÀÛ¡¤Å¸ÀÌÆ² º¹±Í ÀÔ·ÂÀ» ¹­°í, HUD ·¹ÀÌ¾Æ¿ôÀ» º¯°æÇÑ µÚ °ÔÀÓ »óÅÂ¸¦ ÃÊ±âÈ­ÇÕ´Ï´Ù.
+- DungeonContentëŠ” ë˜ì „ ì´ë™Â·ìž¬ì‹œìž‘Â·íƒ€ì´í‹€ ë³µê·€ ìž…ë ¥ì„ ë¬¶ê³ , HUD ë ˆì´ì•„ì›ƒì„ ë³€ê²½í•œ ë’¤ ê²Œìž„ ìƒíƒœë¥¼ ì´ˆê¸°í™”í•©ë‹ˆë‹¤.
 
-- DungeonGameState´Â È®·ü ±â¹Ý ¸Ê »ý¼º°ú LÀÚ ÅëÇà °æ·Î È®º¸, ÀÌµ¿ °¡´É ¿©ºÎ, ¾ÆÀÌÅÛ/¸ó½ºÅÍ/Ãâ±¸ ÀÌº¥Æ®, ÅÏÁ¦ ÀüÅõ¸¦ ´ã´çÇÕ´Ï´Ù.
+- DungeonGameStateëŠ” í™•ë¥  ê¸°ë°˜ ë§µ ìƒì„±ê³¼ Lìž í†µí–‰ ê²½ë¡œ í™•ë³´, ì´ë™ ê°€ëŠ¥ ì—¬ë¶€, ì•„ì´í…œ/ëª¬ìŠ¤í„°/ì¶œêµ¬ ì´ë²¤íŠ¸, í„´ì œ ì „íˆ¬ë¥¼ ë‹´ë‹¹í•©ë‹ˆë‹¤.
 
-- ÀüÅõ´Â BattleCharacter ±â¹ÝÀ¸·Î °ø°Ý·Â¡¤¹æ¾î·Â¡¤¹ÎÃ¸µµ¸¦ »ç¿ëÇØ ÇÇÇØ·®°ú ÅÏ ¼ø¼­¸¦ °áÁ¤ÇÏ¸ç, ÇÃ·¹ÀÌ¾î/¸ó½ºÅÍ ÆÄ»ý Å¬·¡½º°¡ Âü¿©ÇÕ´Ï´Ù.
+- ì „íˆ¬ëŠ” BattleCharacter ê¸°ë°˜ìœ¼ë¡œ ê³µê²©ë ¥Â·ë°©ì–´ë ¥Â·ë¯¼ì²©ë„ë¥¼ ì‚¬ìš©í•´ í”¼í•´ëŸ‰ê³¼ í„´ ìˆœì„œë¥¼ ê²°ì •í•˜ë©°, í”Œë ˆì´ì–´/ëª¬ìŠ¤í„° íŒŒìƒ í´ëž˜ìŠ¤ê°€ ì°¸ì—¬í•©ë‹ˆë‹¤.
 
-- DungeonRenderer´Â Àü°¢ ¹®ÀÚ¸¦ È°¿ëÇØ ¸Ê Å¸ÀÏ°ú ÇÃ·¹ÀÌ¾î À§Ä¡, »óÅÂ ¸Þ½ÃÁö¸¦ Ãâ·ÂÇÕ´Ï´Ù.
+- DungeonRendererëŠ” ì „ê° ë¬¸ìžë¥¼ í™œìš©í•´ ë§µ íƒ€ì¼ê³¼ í”Œë ˆì´ì–´ ìœ„ì¹˜, ìƒíƒœ ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
 
 
 
-3. Å¬·¡½º Æ®¸®
+3. í´ëž˜ìŠ¤ íŠ¸ë¦¬
+   
 main
-¦¦¦¡ GameApplication
-   ¦§¦¡ ScreenService
-   ¦¦¦¡ GameMaster (Singleton)
-      ¦§¦¡ InputService
-      ¦§¦¡ TimeService
-      ¦§¦¡ HUD
-      ¦¦¦¡ ContentManager
-         ¦§¦¡ TitleContent
-         ¦§¦¡ SnakeContent
-         ¦¢  ¦§¦¡ SnakeGameState
-         ¦¢  ¦¦¦¡ SnakeRenderer
-         ¦¦¦¡ DungeonContent
-            ¦§¦¡ DungeonGameState
-            ¦¢  ¦§¦¡ DungeonPlayer (BattleCharacter)
-            ¦¢  ¦§¦¡ DungeonMonster (BattleCharacter)
-            ¦¢  ¦¦¦¡ ±âÅ¸ ¸Ê/ÀüÅõ ·ÎÁ÷
-            ¦¦¦¡ DungeonRenderer
+â””â”€ GameApplication
+   â”œâ”€ ScreenService
+   â””â”€ GameMaster (Singleton)
+      â”œâ”€ InputService
+      â”œâ”€ TimeService
+      â”œâ”€ HUD
+      â””â”€ ContentManager
+         â”œâ”€ TitleContent
+         â”œâ”€ SnakeContent
+         â”‚  â”œâ”€ SnakeGameState
+         â”‚  â””â”€ SnakeRenderer
+         â””â”€ DungeonContent
+            â”œâ”€ DungeonGameState
+            â”‚  â”œâ”€ DungeonPlayer (BattleCharacter)
+            â”‚  â”œâ”€ DungeonMonster (BattleCharacter)
+            â”‚  â””â”€ ê¸°íƒ€ ë§µ/ì „íˆ¬ ë¡œì§
+            â””â”€ DungeonRenderer
 
 
-À§ ±¸Á¶´Â °¢ Çì´õ ¼±¾ð°ú ¼ÒÀ¯ °ü°è¸¦ ±â¹ÝÀ¸·Î ÀÛ¼ºÇß½À´Ï´Ù.
+ìœ„ êµ¬ì¡°ëŠ” ê° í—¤ë” ì„ ì–¸ê³¼ ì†Œìœ  ê´€ê³„ë¥¼ ê¸°ë°˜ìœ¼ë¡œ ìž‘ì„±í–ˆìŠµë‹ˆë‹¤.
 
 
 
-4. Å¬·¡½ºº° ¿ªÇÒ
-- IContent: ¸ðµç ÄÜÅÙÃ÷°¡ ±¸ÇöÇØ¾ß ÇÏ´Â ÃÊ±âÈ­¡¤ÇØÁ¦¡¤¾÷µ¥ÀÌÆ®¡¤·»´õ¸µ ÀÎÅÍÆäÀÌ½ºÀÔ´Ï´Ù.
+4. í´ëž˜ìŠ¤ë³„ ì—­í• 
+- IContent: ëª¨ë“  ì½˜í…ì¸ ê°€ êµ¬í˜„í•´ì•¼ í•˜ëŠ” ì´ˆê¸°í™”Â·í•´ì œÂ·ì—…ë°ì´íŠ¸Â·ë Œë”ë§ ì¸í„°íŽ˜ì´ìŠ¤ìž…ë‹ˆë‹¤.
 
-- GameApplication: °ÔÀÓ ½ÇÇà ¼ö¸íÁÖ±â¸¦ Ä¸½¶È­ÇØ ÀÔ·Â/¾÷µ¥ÀÌÆ®/·»´õ¸µ ·çÇÁ¿Í Á¾·á Ã³¸®¸¦ ´ã´çÇÕ´Ï´Ù.
+- GameApplication: ê²Œìž„ ì‹¤í–‰ ìˆ˜ëª…ì£¼ê¸°ë¥¼ ìº¡ìŠí™”í•´ ìž…ë ¥/ì—…ë°ì´íŠ¸/ë Œë”ë§ ë£¨í”„ì™€ ì¢…ë£Œ ì²˜ë¦¬ë¥¼ ë‹´ë‹¹í•©ë‹ˆë‹¤.
 
-- GameMaster: ½Ì±ÛÅÏÀ¸·Î ÁÖ¿ä ¼­ºñ½º¿Í ÇöÀç È­¸éÀ» °ü¸®ÇÏ°í, Á¾·á ÇÃ·¡±×¸¦ Á¦¾îÇÕ´Ï´Ù.
+- GameMaster: ì‹±ê¸€í„´ìœ¼ë¡œ ì£¼ìš” ì„œë¹„ìŠ¤ì™€ í˜„ìž¬ í™”ë©´ì„ ê´€ë¦¬í•˜ê³ , ì¢…ë£Œ í”Œëž˜ê·¸ë¥¼ ì œì–´í•©ë‹ˆë‹¤.
 
-- ScreenService: ÄÜ¼Ö ¹öÆÛ »ý¼º, Ä¿¼­ Á¦¾î, »ö»ó ¼Ó¼º, Àü°¢ ¹®ÀÚ Æø Ã³¸®, ÀÌÁß ¹öÆÛ ½º¿ÒÀ» ¼öÇàÇÕ´Ï´Ù.
+- ScreenService: ì½˜ì†” ë²„í¼ ìƒì„±, ì»¤ì„œ ì œì–´, ìƒ‰ìƒ ì†ì„±, ì „ê° ë¬¸ìž í­ ì²˜ë¦¬, ì´ì¤‘ ë²„í¼ ìŠ¤ì™‘ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 
-- InputService: Å° ÄÚµå¿Í ÄÝ¹éÀ» ¸ÅÇÎÇÏ°í, µð¹Ù¿î½º ·ÎÁ÷À» Æ÷ÇÔÇÑ ¾÷µ¥ÀÌÆ® ·çÆ¾°ú ¸Ê Å¬¸®¾î ±â´ÉÀ» Á¦°øÇÕ´Ï´Ù.
+- InputService: í‚¤ ì½”ë“œì™€ ì½œë°±ì„ ë§¤í•‘í•˜ê³ , ë””ë°”ìš´ìŠ¤ ë¡œì§ì„ í¬í•¨í•œ ì—…ë°ì´íŠ¸ ë£¨í‹´ê³¼ ë§µ í´ë¦¬ì–´ ê¸°ëŠ¥ì„ ì œê³µí•©ë‹ˆë‹¤.
 
-- TimeService: ÀÌÀü Æ½ ½Ã°¢À» ±â¾ïÇØ 60 FPS °£°ÝÀ¸·Î ¾÷µ¥ÀÌÆ® °¡´É ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+- TimeService: ì´ì „ í‹± ì‹œê°ì„ ê¸°ì–µí•´ 60 FPS ê°„ê²©ìœ¼ë¡œ ì—…ë°ì´íŠ¸ ê°€ëŠ¥ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
 
-- HUD: ÇÁ·¹ÀÓ/ÆÐ³Î ·»´õ¸µ, ÅØ½ºÆ® Å¥, ¸í·É ÀÔ·Â ¶óº§À» °ü¸®ÇÏ¸ç ·¹ÀÌ¾Æ¿ô Åä±Û°ú ÃÊ±â°ªÀ» Á¦°øÇÕ´Ï´Ù.
+- HUD: í”„ë ˆìž„/íŒ¨ë„ ë Œë”ë§, í…ìŠ¤íŠ¸ í, ëª…ë ¹ ìž…ë ¥ ë¼ë²¨ì„ ê´€ë¦¬í•˜ë©° ë ˆì´ì•„ì›ƒ í† ê¸€ê³¼ ì´ˆê¸°ê°’ì„ ì œê³µí•©ë‹ˆë‹¤.
 
-- ContentManager: ÄÜÅÙÃ÷ µî·Ï¡¤ÀüÈ¯¡¤¾÷µ¥ÀÌÆ®¡¤·»´õ¸µ È£ÃâÀ» Áß¾ÓÁýÁßÈ­ÇÏ°í ÀüÈ¯ ½Ã ÀÔ·Â°ú HUD¸¦ ¸®¼ÂÇÕ´Ï´Ù.
+- ContentManager: ì½˜í…ì¸  ë“±ë¡Â·ì „í™˜Â·ì—…ë°ì´íŠ¸Â·ë Œë”ë§ í˜¸ì¶œì„ ì¤‘ì•™ì§‘ì¤‘í™”í•˜ê³  ì „í™˜ ì‹œ ìž…ë ¥ê³¼ HUDë¥¼ ë¦¬ì…‹í•©ë‹ˆë‹¤.
 
-- TitleContent: ¸Þ´º Ç×¸ñ°ú ÀÔ·ÂÀ» ±¸¼ºÇØ ´Ù¸¥ °ÔÀÓÀ¸·Î ÀÌµ¿ÇÏ°Å³ª °ÔÀÓÀ» Á¾·áÇÏ´Â Å¸ÀÌÆ² È­¸éÀ» ±¸ÇöÇÕ´Ï´Ù.
+- TitleContent: ë©”ë‰´ í•­ëª©ê³¼ ìž…ë ¥ì„ êµ¬ì„±í•´ ë‹¤ë¥¸ ê²Œìž„ìœ¼ë¡œ ì´ë™í•˜ê±°ë‚˜ ê²Œìž„ì„ ì¢…ë£Œí•˜ëŠ” íƒ€ì´í‹€ í™”ë©´ì„ êµ¬í˜„í•©ë‹ˆë‹¤.
 
-- SnakeContent: ½º³×ÀÌÅ© °ÔÀÓ »óÅÂ/·»´õ·¯¸¦ ÃÊ±âÈ­ÇÏ°í, ¹æÇâ¡¤Àç½ÃÀÛ¡¤Å¸ÀÌÆ² º¹±Í ÀÔ·ÂÀ» Ã³¸®ÇÕ´Ï´Ù.
+- SnakeContent: ìŠ¤ë„¤ì´í¬ ê²Œìž„ ìƒíƒœ/ë Œë”ëŸ¬ë¥¼ ì´ˆê¸°í™”í•˜ê³ , ë°©í–¥Â·ìž¬ì‹œìž‘Â·íƒ€ì´í‹€ ë³µê·€ ìž…ë ¥ì„ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
-- SnakeGameState: ¹ì ÀÌµ¿, Ãæµ¹, ¸ÔÀÌ ½ºÆù, Á¡¼ö ¹× °ÔÀÓ ¿À¹ö »óÅÂ¸¦ °ü¸®ÇÕ´Ï´Ù.
+- SnakeGameState: ë±€ ì´ë™, ì¶©ëŒ, ë¨¹ì´ ìŠ¤í°, ì ìˆ˜ ë° ê²Œìž„ ì˜¤ë²„ ìƒíƒœë¥¼ ê´€ë¦¬í•©ë‹ˆë‹¤.
 
-- SnakeRenderer: º¸µå, °æ°è, ¹ì/¸ÔÀÌ, Á¡¼ö ¹× »óÅÂ UI¸¦ ÄÜ¼Ö¿¡ Ãâ·ÂÇÕ´Ï´Ù.
+- SnakeRenderer: ë³´ë“œ, ê²½ê³„, ë±€/ë¨¹ì´, ì ìˆ˜ ë° ìƒíƒœ UIë¥¼ ì½˜ì†”ì— ì¶œë ¥í•©ë‹ˆë‹¤.
 
-- DungeonContent: ´øÀü Å½Çè »óÅÂ/·»´õ·¯¸¦ ÃÊ±âÈ­ÇÏ°í ÀÔ·Â ¹× Å¸ÀÌÆ² º¹±Í ¿äÃ»À» Á¦¾îÇÕ´Ï´Ù.
+- DungeonContent: ë˜ì „ íƒí—˜ ìƒíƒœ/ë Œë”ëŸ¬ë¥¼ ì´ˆê¸°í™”í•˜ê³  ìž…ë ¥ ë° íƒ€ì´í‹€ ë³µê·€ ìš”ì²­ì„ ì œì–´í•©ë‹ˆë‹¤.
 
-- DungeonGameState: ¸Ê »ý¼º, ÀÌµ¿ °ËÁõ, ÀÌº¥Æ® Ã³¸®, ¸ó½ºÅÍ¿ÍÀÇ ÀüÅõ, Å»Ãâ ÆÇÁ¤À» ¼öÇàÇÕ´Ï´Ù.
+- DungeonGameState: ë§µ ìƒì„±, ì´ë™ ê²€ì¦, ì´ë²¤íŠ¸ ì²˜ë¦¬, ëª¬ìŠ¤í„°ì™€ì˜ ì „íˆ¬, íƒˆì¶œ íŒì •ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 
-- DungeonRenderer: ´øÀü Å¸ÀÏ°ú ÇÃ·¹ÀÌ¾î, »óÅÂ ÅØ½ºÆ®, °á°ú ¸Þ½ÃÁö¸¦ ·»´õ¸µÇÕ´Ï´Ù.
+- DungeonRenderer: ë˜ì „ íƒ€ì¼ê³¼ í”Œë ˆì´ì–´, ìƒíƒœ í…ìŠ¤íŠ¸, ê²°ê³¼ ë©”ì‹œì§€ë¥¼ ë Œë”ë§í•©ë‹ˆë‹¤.
 
-- BattleCharacter ¹× ÆÄ»ý(DungeonPlayer, DungeonMonster): HP¡¤´É·ÂÄ¡ ±â¹Ý ÀüÅõ ·ÎÁ÷°ú Ä¡À¯/°ø°Ý ¿ªÇÒÀ» Á¤ÀÇÇÕ´Ï´Ù.
+- BattleCharacter ë° íŒŒìƒ(DungeonPlayer, DungeonMonster): HPÂ·ëŠ¥ë ¥ì¹˜ ê¸°ë°˜ ì „íˆ¬ ë¡œì§ê³¼ ì¹˜ìœ /ê³µê²© ì—­í• ì„ ì •ì˜í•©ë‹ˆë‹¤.
