@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include "SnakeType.h"
 
 class ScreenService;
 class SnakeGameState;

@@ -1,5 +1,4 @@
 ﻿#include "SnakeGameState.h"
-#include <algorithm>
 
 void SnakeGameState::UpdateSnakePosition() 
 {

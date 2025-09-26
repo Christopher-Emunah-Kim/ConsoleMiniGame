@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "SnakeType.h"
-#include <vector>
+#include "../DefaultTypes.h"
 
 class SnakeGameState final
 {
