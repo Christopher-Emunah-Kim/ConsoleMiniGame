@@ -104,7 +104,7 @@ vector<vector<int>> DungeonGameState::GenerateDungeonMap( const FDungeonGenerati
 		}
 	}
 
-	grid[ startX ][ startY ] = START;
+	grid[ startY ][ startX ] = START;
 	grid[ exitY ][ exitX ] = EXIT;
 
 	//통과보장 L자 경로 파기
@@ -202,8 +202,8 @@ void DungeonGameState::CarveLPath( vector<vector<int>>& grid )
 		}
 	}
 
-	grid[ startX ][ startY ] = START;
-	grid[ exitX ][ exitY ] = EXIT;
+	grid[ startY ][ startX ] = START;
+	grid[ exitY ][ exitX ] = EXIT;
 }
 
 
