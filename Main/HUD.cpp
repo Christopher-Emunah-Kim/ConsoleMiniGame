@@ -12,9 +12,16 @@ HUD::HUD()
 void HUD::Render(ScreenService& screen) const
 {
 	RenderOutFrame( screen );
-	//RenderInfoPanel(screen);
-	RenderMainPanel(screen);
-	RenderBottomPanel(screen);
+
+	if ( m_layout.bEnableMainPanel )
+	{
+		RenderMainPanel(screen);
+	}
+
+	if(m_layout.bEnableBottomPanel)
+	{
+		RenderBottomPanel(screen);
+	}
 }
 
 
@@ -31,9 +38,14 @@ void HUD::RenderOutFrame( ScreenService& screen ) const
 	{
 		std::wstring line;
 		line.reserve( static_cast<size_t>( innerWidth + 2 ) );
+
 		line.push_back( L'┌' );
-		if ( innerWidth > 0 ) line.append( static_cast<size_t>( innerWidth ) , L'─' );
+		if ( innerWidth > 0 )
+		{
+			line.append( static_cast<size_t>( innerWidth ) , L'─' );
+		}
 		line.push_back( L'┐' );
+
 		screen.Draw( left , top , line );    
 	}
 
@@ -48,54 +60,40 @@ void HUD::RenderOutFrame( ScreenService& screen ) const
 	{
 		std::wstring line;
 		line.reserve( static_cast<size_t>( innerWidth + 2 ) );
+
 		line.push_back( L'└' );
-		if ( innerWidth > 0 ) line.append( static_cast<size_t>( innerWidth ) , L'─' );
+		if ( innerWidth > 0 )
+		{
+			line.append( static_cast<size_t>( innerWidth ) , L'─' );
+		}
 		line.push_back( L'┘' );
+
 		screen.Draw( left , bottom , line ); 
 	}
 }
 
-//TODO : 도규꺼 보고 Render 일괄 처리할수있는 프레임 구조 없나 확인. 이건 너무 하드코딩 느낌.
-void HUD::RenderInfoPanel(ScreenService& screen) const
-{
-
-	screen.Draw(LEFT_MARGIN + 5, 1, L"[ WELCOM TO TRPG ]");
-	screen.Draw((int32)(SCREEN_WIDTH * 0.55f), 1, L" ");
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 1, L"───────────────────────────────");
-	screen.Draw(m_layout.mainPanelStartX, PLAYER_UI_BASE_Y + 1, L"────────────────────────────────────────────────────────────────────────────────────────────");
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 3, L"     [ 플레이어  정보 ]");
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 4, L"───────────────────────────────");
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 10, L"───────────────────────────────");
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 18, L"───────────────────────────────");
-	screen.Draw(LEFT_MARGIN, PLAYER_UI_BASE_Y + 19, L"  [ 플레이어  스테이터스 ]");
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 20, L"───────────────────────────────");
-	screen.Draw(LEFT_MARGIN - 2, PLAYER_UI_BASE_Y + 28, L"───────────────────────────────");
-	screen.Draw(0, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT, L"│─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────│");
-	screen.Draw(0, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"│");
-	screen.Draw(SCREEN_WIDTH - 2, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, L"│");
-	
-	screen.Draw( 2 , SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1 , L"명령 > " );
-}
-
+// Render Wirted Line Text
 void HUD::RenderMainPanel(ScreenService& screen) const
 {
-	if ( false == m_layout.useMainTextPanel )
-	{
-		// 게임 화면 등으로 사용할 때는 HUD에서 패널을 덮어쓰지 않음.
-		return;
-	}
-
 	const int32 startX = m_layout.mainPanelStartX + 1;
 	const int32 startY = m_layout.mainPanelTopY;
 	const int32 height = m_layout.mainPanelHeight;
+	
+	if(height <= 0)
+	{
+		return;
+	}
+	
 	const int32 messageAreaWidth = max( 0 , SCREEN_WIDTH - m_layout.mainPanelStartX - m_layout.rightMargin );
 	const wstring clearLine( static_cast<size_t>( messageAreaWidth ) , L' ' );
 
+	// Clear Area
 	for ( int32 offsetY = 0; offsetY < height; ++offsetY )
 	{
 		screen.Draw( startX , startY + offsetY , clearLine );
 	}
 
+	// Draw Text
 	int32 outputY = startY;
 	for (size_t i = 0; i < m_mainTextQueue.size(); ++i)
 	{
@@ -106,19 +104,26 @@ void HUD::RenderMainPanel(ScreenService& screen) const
 
 void HUD::RenderBottomPanel(ScreenService& screen) const
 {
-	//screen.Draw(9, SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1, GAME_MASTER->GetInputService().GetInputBuffer());
+	const int32 commandLineY = SCREEN_HEIGHT - COMMAND_PANEL_HEIGHT + 1;
+	const int32 clearWidth = max( 0 , SCREEN_WIDTH - m_layout.rightMargin - 1 );
 
-	const int32 promptStartX = 9;
-	const int32 maxLength = max( 0 , SCREEN_WIDTH - m_layout.rightMargin - promptStartX - 1 );
+	const wstring clearLine( static_cast<size_t>( clearWidth ) , L' ' );
+
+	screen.Draw( 1 , commandLineY , clearLine );
+
+	const wstring prompt = L"명령 > ";
+	const int32 maxLength = max( 0 , SCREEN_WIDTH - m_layout.rightMargin - 10 );
 
 	wstring displayText = m_commandLineText.substr( 0 , static_cast<size_t>( maxLength ) );
 
-	screen.Draw( promptStartX , SCREEN_HEIGHT - COMMAND_BLOCK_HEIGHT + 1 , displayText );
+	screen.Draw( 2 , commandLineY , prompt + displayText );
 }
 
 void HUD::WriteLine(const wstring& line)
 {
-	if (m_mainTextQueue.size() >= MAX_LINES)
+	const int32 MAX_LINES = static_cast<int32>( m_layout.mainPanelHeight );
+
+	if (static_cast<int32>(m_mainTextQueue.size()) >= MAX_LINES)
 	{
 		m_mainTextQueue.pop_front();
 	}
@@ -140,11 +145,29 @@ void HUD::SetCommandLineText( const wstring& text )
 void HUD::SetLayout( const FHudLayout& layout )
 {
 	m_layout = layout;
+
+	//레이아웃 변경시 텍스트 큐 크기 조정
+	const int32 maxLInes = max( 1 , m_layout.mainPanelHeight );
+
+	while(static_cast<int32>(m_mainTextQueue.size()) > maxLInes)
+	{
+		m_mainTextQueue.pop_front();
+	}
 }
 
 void HUD::ResetLayout()
 {
 	m_layout = m_defaultLayout;
+}
+
+void HUD::EnableMainPanel( bool bEnable )
+{
+	m_layout.bEnableMainPanel = bEnable;
+}
+
+void HUD::EnableCommandLine( bool bEnable )
+{
+	m_layout.bEnableBottomPanel = bEnable;
 }
 
 FHudViewport HUD::GetGameViewportRect() const

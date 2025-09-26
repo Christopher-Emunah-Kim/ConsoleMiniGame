@@ -1,33 +1,26 @@
 ﻿#pragma once
 #include "../Service/ScreenService.h"
 
-constexpr __int32 MAX_LINES = 35;
-constexpr __int32 DEFAULT_BASE_Y = SCREEN_HEIGHT - MAX_LINES - 4;
-constexpr __int8 LEFT_MARGIN = 3;
-constexpr __int8 RIGHT_MARGIN = 4;
-constexpr __int8 COMMAND_BLOCK_HEIGHT = 3;
-constexpr __int16 PLAYER_UI_BASE_Y = 1;
-constexpr __int16 SYSTEM_TEXT_BASE_Y = 3;
-
 class ScreenService;
 
+//HUD 텍스트/명령패널 배치 레이아웃
 struct FHudLayout final
 {
-	int32 infoPanelWidth = PLAYERINFO_PANEL_WIDTH;
-	int32 mainPanelStartX = GAME_PANEL_START_X;
-	int32 mainPanelTopY = SYSTEM_TEXT_BASE_Y + 1;
-	int32 mainPanelHeight = MAX_LINES;
-	int32 rightMargin = RIGHT_MARGIN;
-	bool useMainTextPanel = true;
-
+	int32 mainPanelStartX = 34;
+	int32 mainPanelTopY = 2;
+	int32 mainPanelHeight = 35;
+	int32 rightMargin = 4;
+	bool bEnableMainPanel = false;
+	bool bEnableBottomPanel = false;
 };
 
+//메인 게임화면 레이아웃
 struct FHudViewport final
 {
-	int32 x = GAME_PANEL_START_X + 1;
-	int32 y = SYSTEM_TEXT_BASE_Y + 1;
-	int32 width = SCREEN_WIDTH - RIGHT_MARGIN - ( GAME_PANEL_START_X + 1 );
-	int32 height = MAX_LINES;
+	int32 x = 35;
+	int32 y = 2;
+	int32 width = SCREEN_WIDTH - 39;
+	int32 height = 35;
 };
 
 class HUD final
@@ -38,7 +31,6 @@ public:
 
 private:
 	void RenderOutFrame( ScreenService& screen ) const;
-	void RenderInfoPanel(ScreenService& screen) const;
 	void RenderMainPanel(ScreenService& screen) const;
 	void RenderBottomPanel(ScreenService& screen) const;
 
@@ -50,12 +42,16 @@ public:
 
 	void SetLayout( const FHudLayout& layout );
 	void ResetLayout();
+	
+	void EnableMainPanel( bool bEnable );
+	void EnableCommandLine( bool bEnable );
 
 	FHudLayout& GetLayout() { return m_layout; }
 	FHudLayout& GetDefaultLayout() { return m_defaultLayout; }
 	FHudViewport GetGameViewportRect() const;
 
 private:
+	static constexpr int32 COMMAND_PANEL_HEIGHT = 3;
 	FHudLayout m_layout;
 	FHudLayout m_defaultLayout;
 

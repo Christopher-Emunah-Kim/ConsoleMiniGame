@@ -131,6 +131,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Main\Content\TheSnake\SnakeContent.cpp" />
+    <ClCompile Include="Main\Content\TheSnake\SnakeGameState.cpp" />
+    <ClCompile Include="Main\Content\TheSnake\SnakeRenderer.cpp" />
     <ClCompile Include="Main\Content\TitleContent.cpp" />
     <ClCompile Include="Main\HUD.cpp" />
     <ClCompile Include="Service\ScreenService.cpp" />
@@ -146,6 +148,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Main\Content\TheSnake\SnakeContent.h" />
+    <ClInclude Include="Main\Content\TheSnake\SnakeGameState.h" />
+    <ClInclude Include="Main\Content\TheSnake\SnakeRenderer.h" />
+    <ClInclude Include="Main\Content\TheSnake\SnakeType.h" />
     <ClInclude Include="Main\Content\TitleContent.h" />
     <ClInclude Include="Main\HUD.h" />
     <ClInclude Include="Service\ScreenService.h" />

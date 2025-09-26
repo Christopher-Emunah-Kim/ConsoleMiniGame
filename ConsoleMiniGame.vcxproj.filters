@@ -48,6 +48,12 @@
     <ClCompile Include="Main\Content\TheSnake\SnakeContent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Main\Content\TheSnake\SnakeRenderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Content\TheSnake\SnakeGameState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\GameApplication.h">
@@ -87,6 +93,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Main\Content\TheSnake\SnakeContent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheSnake\SnakeType.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheSnake\SnakeRenderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheSnake\SnakeGameState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

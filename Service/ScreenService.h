@@ -3,8 +3,6 @@
 
 constexpr int32 SCREEN_WIDTH = 128;
 constexpr int32 SCREEN_HEIGHT = 42;
-constexpr int32 PLAYERINFO_PANEL_WIDTH = 32; //SCREEN_WIDTH / LAYOUT_RATIO
-constexpr int32 GAME_PANEL_START_X = PLAYERINFO_PANEL_WIDTH + 2; //MARGIN
 constexpr int8 BUFFER_SIZE = 2;
 constexpr int8 DEFAULT_FONT_COLOR = WHITE;
 constexpr int8 DEFAULT_BG_COLOR = BLACK;
