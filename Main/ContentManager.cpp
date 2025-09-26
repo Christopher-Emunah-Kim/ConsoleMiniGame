@@ -3,6 +3,7 @@
 #include "../Core/GameMaster.h"
 #include "Content/TitleContent.h"
 #include "Content/TheSnake/SnakeContent.h"
+#include "Content/TheDungeon/DungeonContent.h"
 
 
 void ContentManager::LoadContent()
@@ -12,6 +13,7 @@ void ContentManager::LoadContent()
 
 	AddContent( static_cast<int>( EContent::TITLE ) , make_unique<TitleContent>() );
 	AddContent( static_cast<int>( EContent::SNAKE ) , make_unique<SnakeContent>() );
+	AddContent( static_cast<int>( EContent::DUNGEON ) , make_unique<DungeonContent>() );
 	
 
 	ChangeContent( static_cast<int>( EContent::TITLE ) );

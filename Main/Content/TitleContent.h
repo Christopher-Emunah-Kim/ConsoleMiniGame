@@ -16,6 +16,7 @@ private:
 	};
 
 	void LoadSnakeContent();
+	void LoadDungeonContent();
 
 	void ExitGame();
 

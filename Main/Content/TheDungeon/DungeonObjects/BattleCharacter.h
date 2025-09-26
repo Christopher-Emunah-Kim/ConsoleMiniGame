@@ -15,6 +15,8 @@ public:
 	virtual bool IsAlive() const noexcept;
 
 	inline FCharacterInfo& GetCharacterInfo() noexcept { return m_characterInfo; }
+	inline const FCharacterInfo& GetCharacterInfo() const noexcept { return m_characterInfo; }
+	inline int16 GetCurrentHP() const noexcept { return m_currentHP; }
 
 protected:
 	FCharacterInfo m_characterInfo;

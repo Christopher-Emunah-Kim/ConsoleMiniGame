@@ -46,7 +46,7 @@ enum class EContent {
 	TITLE,
 	LOAD,
 	SNAKE,
-	MAZE
+	DUNGEON
 };
 
 // Color code for Windows Console

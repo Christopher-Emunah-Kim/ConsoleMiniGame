@@ -7,6 +7,11 @@ void TitleContent::LoadSnakeContent()
 	GAME_MASTER->GetContentManager().ChangeContent(static_cast<int>(EContent::SNAKE));
 }
 
+void TitleContent::LoadDungeonContent()
+{
+	GAME_MASTER->GetContentManager().ChangeContent( static_cast<int>( EContent::DUNGEON ) );
+}
+
 void TitleContent::ExitGame()
 {
 	GAME_MASTER->GetHUD().WriteLine( L"게임을 종료합니다." );
@@ -65,6 +70,7 @@ void TitleContent::InitializeMenu()
 	m_selectedIndex = 0;
 
 	m_menuItems.push_back( { L"1. THE SNAKE", bind( &TitleContent::LoadSnakeContent, this ) } );
+	m_menuItems.push_back( { L"2. DUNGEON", bind( &TitleContent::LoadDungeonContent, this ) } );
 	m_menuItems.push_back( { L"2. 게임 종료", bind( &TitleContent::ExitGame, this ) } );
 }
 
