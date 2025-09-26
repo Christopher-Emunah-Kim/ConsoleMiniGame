@@ -19,7 +19,7 @@ void DungeonRenderer::RenderGame( ScreenService& screen , const DungeonGameState
 
 	const auto TileToConsoleX = []( int32 tileX )
 		{
-			// 던전 타일은 전각문자(2칸 폭)로 그리므로 X 좌표도 2배로 환산한다.
+			// 던전 타일은 전각문자(2칸 폭)로 그리므로 X 좌표도 2배로 환산
 			return tileX * 2;
 		};
 
@@ -45,8 +45,10 @@ void DungeonRenderer::RenderGame( ScreenService& screen , const DungeonGameState
 			line.push_back( tileChar );
 		}
 
-		screen.Draw( 0 , BOARD_TOP_MARGIN + static_cast<int32>( y ) , line );
+		screen.Draw( 15 , BOARD_TOP_MARGIN + static_cast<int32>( y ) , line );
 	}
+
+	screen.Draw( TileToConsoleX( playerPos.x ) + 15, BOARD_TOP_MARGIN + playerPos.y , L"●" );
 }
 
 void DungeonRenderer::RenderUI( ScreenService& screen , const DungeonGameState& gameState ) const
@@ -55,15 +57,15 @@ void DungeonRenderer::RenderUI( ScreenService& screen , const DungeonGameState& 
 	const FCharacterInfo& info = player.GetCharacterInfo();
 
 	const wstring hpText = L"HP : " + std::to_wstring( player.GetCurrentHP() ) + L" / " + std::to_wstring( info.maxHP );
-	screen.Draw( 0 , 0 , hpText );
+	screen.Draw( 15 , 0 , hpText );
 
 	const wstring posText = L"위치 : (" + std::to_wstring( info.position.x ) + L", " + std::to_wstring( info.position.y ) + L")";
-	screen.Draw( 0 , 1 , posText );
+	screen.Draw( 15 , 1 , posText );
 
 	const wstring& status = gameState.GetStatusMessage();
 	if ( !status.empty() )
 	{
-		screen.Draw( 0 , 3 , status );
+		screen.Draw( 15 , 3 , status );
 	}
 
 	if ( gameState.IsGameOver() )
@@ -71,7 +73,7 @@ void DungeonRenderer::RenderUI( ScreenService& screen , const DungeonGameState& 
 		const wstring resultText = gameState.HasPlayerEscaped()
 			? L"던전 탈출 성공! R 키로 재도전, Q 키로 종료."
 			: L"전투에서 패배했습니다. R 키로 재도전하세요.";
-		screen.Draw( 0 , 4 , resultText );
+		screen.Draw( 15 , 4 , resultText );
 	}
 }
 

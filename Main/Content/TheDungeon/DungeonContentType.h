@@ -3,8 +3,8 @@
 #include "../DefaultTypes.h"
 
 
-constexpr int32 DUNGEON_AREA_WIDTH = 50;
-constexpr int32 DUNGEON_AREA_HEIGHT = 50;
+constexpr int32 DUNGEON_AREA_WIDTH = 30;
+constexpr int32 DUNGEON_AREA_HEIGHT = 30;
 
 constexpr int16 DEFAULT_PLAYER_X = 1;
 constexpr int16 DEFAULT_PLAYER_Y = 1;
