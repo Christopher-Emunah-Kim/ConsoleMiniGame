@@ -15,7 +15,7 @@ public:
 private:
 	void VisibleConsoleCursor(bool isVisible);
 	bool IsValidCoordinate(int32 x, int32 y);
-	bool IsHangulSyllable(const wchar_t& c) const;
+	bool IsDoubleWidthCharacter(const wchar_t& c) const;
 	void SetFixedWindowSize();
 	void SetFontColor(int8 color, int8 bgColor);
 
@@ -33,4 +33,7 @@ private:
 	int32 m_backBufferIdx = 0;
 	WCHAR m_writeBuffer[SCREEN_HEIGHT][SCREEN_WIDTH] = { };
 
+	//for colors
+	WORD m_colorBuffer[ SCREEN_HEIGHT ][ SCREEN_WIDTH ] = { };
+	WORD m_currentAttribute = static_cast<WORD>(( ( DEFAULT_BG_COLOR & 0xf ) << 4 ) | ( DEFAULT_FONT_COLOR & 0xf ));
 };

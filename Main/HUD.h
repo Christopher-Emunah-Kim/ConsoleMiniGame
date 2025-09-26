@@ -6,9 +6,9 @@ class ScreenService;
 //HUD 텍스트/명령패널 배치 레이아웃
 struct FHudLayout final
 {
-	int32 mainPanelStartX = 34;
+	int32 mainPanelStartX = SCREEN_WIDTH / 4;
 	int32 mainPanelTopY = 2;
-	int32 mainPanelHeight = 35;
+	int32 mainPanelHeight = SCREEN_HEIGHT - 5;
 	int32 rightMargin = 4;
 	bool bEnableMainPanel = false;
 	bool bEnableBottomPanel = false;
@@ -17,10 +17,10 @@ struct FHudLayout final
 //메인 게임화면 레이아웃
 struct FHudViewport final
 {
-	int32 x = 35;
-	int32 y = 2;
-	int32 width = SCREEN_WIDTH - 39;
-	int32 height = 35;
+	int32 x;
+	int32 y;
+	int32 width;
+	int32 height;
 };
 
 class HUD final

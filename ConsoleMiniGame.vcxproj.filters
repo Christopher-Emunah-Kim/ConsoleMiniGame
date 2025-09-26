@@ -51,6 +51,15 @@
     <ClCompile Include="Main\Content\TheSnake\SnakeGameState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Main\Content\TheDungeon\DungeonContent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Content\TheDungeon\DungeonGameState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Content\TheDungeon\DungeonRenderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\GameApplication.h">
@@ -96,6 +105,18 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Main\Content\TheSnake\SnakeGameState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheDungeon\DungeonContent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheDungeon\DungeonGameState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheDungeon\DungeonRenderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Content\TheDungeon\DungeonContentType.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

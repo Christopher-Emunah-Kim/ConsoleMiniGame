@@ -64,7 +64,7 @@ void TitleContent::InitializeMenu()
 	m_menuItems.clear();
 	m_selectedIndex = 0;
 
-	m_menuItems.push_back( { L"1. Snake 게임 시작", bind( &TitleContent::LoadSnakeContent, this ) } );
+	m_menuItems.push_back( { L"1. THE SNAKE", bind( &TitleContent::LoadSnakeContent, this ) } );
 	m_menuItems.push_back( { L"2. 게임 종료", bind( &TitleContent::ExitGame, this ) } );
 }
 
@@ -95,15 +95,21 @@ void TitleContent::RenderTitleScreen()
 
 	hud.SetCommandLineText( L"WASD/방향키 : 이동 | Enter : 선택" );
 
-	hud.WriteLine( L"■■■■■  ■          ■      ■  ■■■■■  " );
-	hud.WriteLine( L"■      ■  ■          ■      ■  ■          " );
-	hud.WriteLine( L"■      ■  ■          ■      ■  ■          " );
-	hud.WriteLine( L"■■■■■  ■          ■      ■  ■■■■■  " );
-	hud.WriteLine( L"■          ■          ■      ■          ■  " );
-	hud.WriteLine( L"■          ■          ■      ■          ■  " );
-	hud.WriteLine( L"■          ■■■■■  ■■■■■  ■■■■■  " );
+	hud.WriteLine( L"■■■■■■■■■■■■■■■■■■■■■■" );
+	hud.WriteLine( L"■                                         ■" );
+	hud.WriteLine( L"■  ■■■  ■     ■   ■  ■■     ■    ■" );
+	hud.WriteLine( L"■  ■   ■ ■     ■   ■ ■        ■    ■" );
+	hud.WriteLine( L"■  ■   ■ ■     ■   ■ ■     ■■■■ ■" );
+	hud.WriteLine( L"■  ■■■  ■     ■   ■  ■■     ■    ■" );
+	hud.WriteLine( L"■  ■      ■     ■   ■      ■   ■    ■" );
+	hud.WriteLine( L"■  ■      ■     ■   ■      ■   ■    ■" );
+	hud.WriteLine( L"■  ■      ■■■   ■■   ■■     ■    ■" );
+	hud.WriteLine( L"■                                         ■" );
+	hud.WriteLine( L"■   C O N S O L E   G A M E   P A C K     ■" );
+	hud.WriteLine( L"■             v e r . 0 . 3               ■" );
+	hud.WriteLine( L"■■■■■■■■■■■■■■■■■■■■■■" );
 
-	hud.WriteLine( L"Console Game Pack ver 0.3" );
+	hud.WriteLine( L" " );
 	hud.WriteLine( L" " );
 	hud.WriteLine( L" " );
 	hud.WriteLine( L"타이틀 화면입니다." );

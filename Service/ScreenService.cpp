@@ -1,4 +1,4 @@
-#include "ScreenService.h"
+﻿#include "ScreenService.h"
 
 ScreenService::~ScreenService()
 {
@@ -30,10 +30,58 @@ bool ScreenService::IsValidCoordinate(int32 x, int32 y)
 	}
 }
 
-bool ScreenService::IsHangulSyllable(const wchar_t& c) const
+bool ScreenService::IsDoubleWidthCharacter(const wchar_t& c) const
 {
-	// 0xAC00(��) ~ 0xD7A3(�K)
-	if (c >= (int32)0xAC00 && c <= (int32)0xD7A3)
+	//기존 한글처리
+	// 0xAC00(가) ~ 0xD7A3(핳)
+	/*if (c >= (int32)0xAC00 && c <= (int32)0xD7A3)
+	{
+		return true;
+	}
+
+	return false;*/
+
+	// Windows 콘솔에서 두 칸 폭으로 표현되는 주요 유니코드 영역을 확인
+	if ( c < 0x1100 )
+	{
+		return false;
+	}
+
+	struct Interval
+	{
+		wchar_t first;
+		wchar_t last;
+	};
+
+	static const Interval wideIntervals[] = {
+		{ 0x1100, 0x115F }, // 한글 자모
+		{ 0x2329, 0x232A },
+		{ 0x2E80, 0x2FFB }, // CJK 부수, 한자 호환 등
+		{ 0x3000, 0x303E },
+		{ 0x3040, 0x4DBF },
+		{ 0x4E00, 0xA4C6 },
+		{ 0xA960, 0xA97C },
+		{ 0xAC00, 0xD7FB }, // 한글 음절
+		{ 0xF900, 0xFAFF },
+		{ 0xFE10, 0xFE19 },
+		{ 0xFE30, 0xFE6B },
+		{ 0xFF01, 0xFF60 },
+		{ 0xFFE0, 0xFFE6 },
+		{ 0x1F200, 0x1F6FF }, // 기호, 도형, 이모지 등
+		{ 0x20000, 0x3FFFD }
+	};
+
+	for ( const auto& interval : wideIntervals )
+	{
+		if ( c >= interval.first && c <= interval.last )
+		{
+			return true;
+		}
+	}
+
+	// 동그라미, 별, 네모 등은 모호 폭(ambiguous width)이라는데
+	// 스네이크 게임에서 2칸 폭으로 표시되므로 예외적으로 true처리
+	if ( c >= 0x25A0 && c <= 0x26FF )
 	{
 		return true;
 	}
@@ -65,7 +113,8 @@ void ScreenService::SetFontColor(int8 color, int8 bgColor)
 		bgColor = BLACK;
 	}
 
-	SetConsoleTextAttribute(m_consoleBuffers[m_backBufferIdx], ((bgColor & 0xf) << 4) | (color & 0xf));
+	m_currentAttribute = static_cast<WORD>( ( ( bgColor & 0xf ) << 4 ) | ( color & 0xf ) );
+	SetConsoleTextAttribute(m_consoleBuffers[m_backBufferIdx], m_currentAttribute );
 }
 
 void ScreenService::Init()
@@ -131,6 +180,7 @@ void ScreenService::Release()
 			m_consoleBuffers[i] = INVALID_HANDLE_VALUE;
 		}
 	}
+	m_currentAttribute = static_cast<WORD>( ( ( DEFAULT_BG_COLOR & 0xf ) << 4 ) | ( DEFAULT_FONT_COLOR & 0xf ) );
 }
 
 void ScreenService::Clear()
@@ -140,8 +190,10 @@ void ScreenService::Clear()
 		for (int32 x = 0; x < SCREEN_WIDTH; ++x)
 		{
 			m_writeBuffer[y][x] = L' ';
+			m_colorBuffer[ y ][ x ] = static_cast<WORD>( ( ( DEFAULT_BG_COLOR & 0xf ) << 4 ) | ( DEFAULT_FONT_COLOR & 0xf ) );
 		}
 	}
+	m_currentAttribute = static_cast<WORD>( ( ( DEFAULT_BG_COLOR & 0xf ) << 4 ) | ( DEFAULT_FONT_COLOR & 0xf ) );
 }
 
 void ScreenService::SwapBuffer()
@@ -155,7 +207,7 @@ void ScreenService::SwapBuffer()
 		for (int32 x = 0; x < SCREEN_WIDTH; ++x)
 		{
 			tempBuffer[y * SCREEN_WIDTH + x].Char.UnicodeChar = m_writeBuffer[y][x];
-			tempBuffer[y * SCREEN_WIDTH + x].Attributes = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE;
+			tempBuffer[y * SCREEN_WIDTH + x].Attributes = m_colorBuffer[y][x];
 		}
 	}
 
@@ -183,6 +235,17 @@ void ScreenService::Draw(int32 x, int32 y, const wchar_t& c)
 	}
 
 	m_writeBuffer[y][x] = c;
+	m_colorBuffer[ y ][ x ] = m_currentAttribute;
+
+	if ( IsDoubleWidthCharacter( c ) )
+	{
+		int32 nextX = x + 1;
+		if(IsValidCoordinate( nextX , y ) )
+		{
+			m_writeBuffer[y][nextX] = L' ';
+			m_colorBuffer[ y ][ nextX ] = m_currentAttribute;
+		}
+	}
 }
 
 void ScreenService::Draw(int32 x, int32 y, const wstring& str, int8 color, int8 bgColor)
@@ -200,7 +263,7 @@ void ScreenService::Draw(int32 x, int32 y, const wstring& str, int8 color, int8 
 	{
 		Draw(currentX, y, str[i]);
 
-		if (IsHangulSyllable(str[i]))
+		if (IsDoubleWidthCharacter(str[i]))
 		{
 			currentX += 2;
 		}

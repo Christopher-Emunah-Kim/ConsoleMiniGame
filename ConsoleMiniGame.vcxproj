@@ -127,6 +127,9 @@
     <ClCompile Include="ConsoleMiniGame.cpp" />
     <ClCompile Include="Core\GameApplication.cpp" />
     <ClCompile Include="Core\GameMaster.cpp" />
+    <ClCompile Include="Main\Content\TheDungeon\DungeonContent.cpp" />
+    <ClCompile Include="Main\Content\TheDungeon\DungeonGameState.cpp" />
+    <ClCompile Include="Main\Content\TheDungeon\DungeonRenderer.cpp" />
     <ClCompile Include="Main\Content\TheSnake\SnakeContent.cpp" />
     <ClCompile Include="Main\Content\TheSnake\SnakeGameState.cpp" />
     <ClCompile Include="Main\Content\TheSnake\SnakeRenderer.cpp" />
@@ -141,6 +144,10 @@
     <ClInclude Include="Core\Common.h" />
     <ClInclude Include="Core\GameApplication.h" />
     <ClInclude Include="Core\GameMaster.h" />
+    <ClInclude Include="Main\Content\TheDungeon\DungeonContent.h" />
+    <ClInclude Include="Main\Content\TheDungeon\DungeonContentType.h" />
+    <ClInclude Include="Main\Content\TheDungeon\DungeonGameState.h" />
+    <ClInclude Include="Main\Content\TheDungeon\DungeonRenderer.h" />
     <ClInclude Include="Main\Content\TheSnake\SnakeContent.h" />
     <ClInclude Include="Main\Content\TheSnake\SnakeGameState.h" />
     <ClInclude Include="Main\Content\TheSnake\SnakeRenderer.h" />

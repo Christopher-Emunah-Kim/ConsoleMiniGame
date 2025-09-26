@@ -116,6 +116,18 @@ void HUD::RenderBottomPanel(ScreenService& screen) const
 
 	wstring displayText = m_commandLineText.substr( 0 , static_cast<size_t>( maxLength ) );
 
+	{
+		const int innerWidth = max( 0 , SCREEN_WIDTH - 3 ); // 가로 길이(모서리 제외)
+
+		std::wstring line;
+		line.reserve( static_cast<size_t>( innerWidth ) );
+		if ( innerWidth > 0 )
+		{
+			line.append( static_cast<size_t>( innerWidth ) , L'─' );
+		}
+
+		screen.Draw( 1 , commandLineY - 1 , line );
+	}
 	screen.Draw( 2 , commandLineY , prompt + displayText );
 }
 
