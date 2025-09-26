@@ -1,6 +1,7 @@
 ﻿#include "SnakeRenderer.h"
 #include "SnakeGameState.h"
 #include "SnakeType.h"
+#include "../DefaultTypes.h"
 #include "../../../Core/GameMaster.h"
 #include "../../../Service/ScreenService.h"
 #include "../../../Main/HUD.h"

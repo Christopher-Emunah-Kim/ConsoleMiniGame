@@ -17,6 +17,12 @@ void DungeonRenderer::RenderGame( ScreenService& screen , const DungeonGameState
 	const auto& map = gameState.GetDungeonMap();
 	const FCoord playerPos = gameState.GetPlayer().GetCharacterInfo().position;
 
+	const auto TileToConsoleX = []( int32 tileX )
+		{
+			// 던전 타일은 전각문자(2칸 폭)로 그리므로 X 좌표도 2배로 환산한다.
+			return tileX * 2;
+		};
+
 	for ( size_t y = 0; y < map.size(); ++y )
 	{
 		wstring line;
@@ -27,10 +33,11 @@ void DungeonRenderer::RenderGame( ScreenService& screen , const DungeonGameState
 			wchar_t tileChar = L' ';
 			switch ( static_cast<Cell>( map[ y ][ x ] ) )
 			{
+			case PATH:    tileChar = L'　'; break; // 전각 공백으로 통로 폭 유지
 			case WALL:    tileChar = L'■'; break;
-			case START:   tileChar = L'S'; break;
-			case MONSTER: tileChar = L'!'; break;
-			case ITEM:    tileChar = L'?'; break;
+			case START:   tileChar = L'Ｓ'; break;
+			case MONSTER: tileChar = L'！'; break;
+			case ITEM:    tileChar = L'？'; break;
 			case EXIT:    tileChar = L'★'; break;
 			default:      tileChar = L' '; break;
 			}
@@ -40,8 +47,6 @@ void DungeonRenderer::RenderGame( ScreenService& screen , const DungeonGameState
 
 		screen.Draw( 0 , BOARD_TOP_MARGIN + static_cast<int32>( y ) , line );
 	}
-
-	screen.Draw( playerPos.x , BOARD_TOP_MARGIN + playerPos.y , L"●" );
 }
 
 void DungeonRenderer::RenderUI( ScreenService& screen , const DungeonGameState& gameState ) const

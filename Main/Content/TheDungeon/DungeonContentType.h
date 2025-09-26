@@ -3,7 +3,6 @@
 #include "../DefaultTypes.h"
 
 
-constexpr int32 BOARD_TOP_MARGIN = 6;
 constexpr int32 DUNGEON_AREA_WIDTH = 50;
 constexpr int32 DUNGEON_AREA_HEIGHT = 50;
 

@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "../../Core/Common.h"
 
+
+constexpr int32 BOARD_TOP_MARGIN = 6;
+
 enum class EDirection : int8
 {
 	NONE = 0 ,
