@@ -46,26 +46,23 @@ ConsoleMiniGame
 
 
 3. 클래스 트리
-'''cpp
 main
-└─ GameApplication
-   ├─ ScreenService
-   └─ GameMaster (Singleton)
-      ├─ InputService
-      ├─ TimeService
-      ├─ HUD
-      └─ ContentManager
-         ├─ TitleContent
-         ├─ SnakeContent
-         │  ├─ SnakeGameState
-         │  └─ SnakeRenderer
-         └─ DungeonContent
-            ├─ DungeonGameState
-            │  ├─ DungeonPlayer (BattleCharacter)
-            │  ├─ DungeonMonster (BattleCharacter)
-            │  └─ 기타 맵/전투 로직
-            └─ DungeonRenderer
-'''
+ㄴ GameApplication
+   ㄴScreenService
+ㄴ GameMaster (Singleton)
+   ㄴInputService
+   ㄴTimeService
+   ㄴHUD
+   ㄴContentManager
+      ㄴTitleContent
+      ㄴSnakeContent
+         ㄴSnakeGameState
+         ㄴSnakeRenderer
+      ㄴDungeonContent
+         ㄴDungeonGameState
+         ㄴDungeonPlayer (BattleCharacter)
+         ㄴDungeonMonster (BattleCharacter)
+         ㄴDungeonRenderer
 
 위 구조는 각 헤더 선언과 소유 관계를 기반으로 작성했습니다.
 
